@@ -1,0 +1,21 @@
+<div style="border: 5px #0000FF solid;">
+<p>
+My Third Component AleS_900
+</p>
+
+<!--
+    EJERCICIO 4:
+    08/10/2021 crear un componente test3, que tenga 2 cajas de texto y un boton, las cajas de texto una llamada "name" y otro "lastName" y al dar click en un boton que imprima estos datos concatenados usando banana box.
+-->
+
+
+<p>
+My NAME: {{myName}}
+</p>
+
+<input type="text" [(ngModel)]="myVarName">
+<input type="text" [(ngModel)]="myVarLastName"><br><br>
+<button id="myButton" 
+(click)="test3($event)"
+>CONCATENATE</button>
+</div>
