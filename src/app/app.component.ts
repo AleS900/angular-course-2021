@@ -56,7 +56,7 @@ export class AppComponent {
   // *************************************
   // ***          OPERADORES           ***
   // *************************************
-  
+
   constructor() {
     /* EJEMPLO 1: Multiplicar cada elemento por 2
 
@@ -67,7 +67,6 @@ export class AppComponent {
     */
     const testMap = [1, 2, 3, 4, 5, 6].map(item => item * 2);
     console.log(testMap);
-
 
     /* EJEMPLO 2: Para cada item hacer algo
 
@@ -80,16 +79,14 @@ export class AppComponent {
     const testForEach = [1, 2, 3, 4, 5, 6].forEach(item => item);
     console.log(testForEach);
 
-
     /* EJEMPLO 3: Buscar 4
 
         find: Opera a partir de un Array, devolviendo 
         un resultado según una condición dada.
 
     */
-    const testFind = [1, 2, 3, 4, 5, 6].find(item => item === 4);//=== Busqueda estricta
+    const testFind = [1, 2, 3, 4, 5, 6].find(item => item === 4); //=== Busqueda estricta
     console.log(testFind);
-
 
     /* EJEMPLO 4: Extraer números divisbles entre 2
 
@@ -101,7 +98,6 @@ export class AppComponent {
     const testFilter = [1, 2, 3, 4, 5, 6].filter(item => item % 2 === 0);
     console.log(testFilter);
 
-
     /* EJEMPLO 5: Buscar indice que cumpla una condición
 
         findIndex: Devuelve el indice del primer 
@@ -110,7 +106,6 @@ export class AppComponent {
     */
     const testFindIndex = [90, 2, 300, 4, 5, 6].findIndex(item => item === 300);
     console.log(testFindIndex);
-
 
     /* EJEMPLO 6: Buscar una letra en un palabra
 
@@ -123,7 +118,6 @@ export class AppComponent {
     const testIndexOf = 'ricardo'.indexOf('o');
     console.log(testIndexOf);
 
-
     /* EJEMPLO 7: Convertir un array en una cadena.
 
         join: Convierte un array en una cadena
@@ -133,7 +127,6 @@ export class AppComponent {
     */
     const testJoin = [1, 2, 3, 4, 5, 6].join(',');
     console.log(testJoin);
-
 
     /* EJEMPLO 8: Convertir una cadena en un Array
 
@@ -145,7 +138,6 @@ export class AppComponent {
     const testSplit = '1,2,3,4,5,6'.split(',');
     console.log(testSplit);
 
-
     /* EJEMPLO 9: Fragmentar Dos Array
 
         splice: Dado un Array, indicando (m,n) se
@@ -155,15 +147,15 @@ export class AppComponent {
         - n: Cuantos elementos después de "m"
              queremos eliminar. 
 
-    */ 
+    */
+
     const testSpliceA = [10, 20, 30, 40, 50, 60];
     testSpliceA.splice(0, 1);
-    // Modificación indirecta: Nos muestra lo 
+    // Modificación indirecta: Nos muestra lo
     // original después del corte.
     const testSpliceB = [1, 2, 3, 4, 5, 6].splice(1, 2);
     // Modificación directa:   Nos muestra lo cortado.
     console.log(testSpliceA, testSpliceB);
-    
 
     /* EJEMPLO 10: Sumar todos los elementos de un array
 
@@ -184,9 +176,11 @@ export class AppComponent {
     /* EJEMPLO 11: Sumar todos los elementos de un array y
                    sumarle 100.
     */
-    const testReduce1 = [1, 2, 3, 4, 5, 6].reduce((acc, value) => acc + value, 100);
+    const testReduce1 = [1, 2, 3, 4, 5, 6].reduce(
+      (acc, value) => acc + value,
+      100
+    );
     console.log(testReduce1);
-
 
     /* EJEMPLO 12: Convertir una constante JSON en 
                    un Arreglo, luego en otro 
@@ -215,7 +209,6 @@ export class AppComponent {
     const asadasd = { 1: 'd', 2: 'd', 3: 'd', 4: 'd', 5: 'd' };
     console.log('ddddd', Object.keys(asadasd));
 
-
     /* EJEMPLO 14: Concatenar dos arreglos, luego
                    concatenar dos varibles JSON y
                    luego concatenar ambos 
@@ -233,7 +226,6 @@ export class AppComponent {
     const per2 = { data: 'Datos', ...per1 };
     // Concatenación resultados
     console.log('Spread', array2, per2);
-
 
     /* EJEMPLO 15: Dado un JSON de los datos
                    personales de una persona
@@ -281,7 +273,7 @@ export class AppComponent {
   // ***        INPUTS & OUTPUTS       ***
   // *************************************
 
-  printDataSantiagoComp(event: any){
-      console.log('SANTIAGO COMP: ', event);
+  printDataSantiagoComp(event: any) {
+    console.log('SANTIAGO COMP: ', event);
   }
 }
