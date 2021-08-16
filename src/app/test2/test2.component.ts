@@ -18,7 +18,12 @@ export class Test2Component {
   @Input('lastName') inputLastName: string = 'Last Name';
 
   @Output('onGeneralData') generalData = new EventEmitter(null);
+
   @Output('onGeneralDataCORRECTED') generalDataCORRECTED = new EventEmitter(null);
+
+  myVar1 = 'Hola';
+  myVar2 = 4;
+  myVar3 = 5;
 
   /*
     La salida con el nombre de E5 es el ejercicio resuelto 
@@ -36,7 +41,30 @@ export class Test2Component {
 
     this.generalDataCORRECTED.emit('General Data ' + this.inputName + ' ' + this.inputLastName);
   
+    //document.getElementById('myButton')
+
   }
 
   constructor() {}
+
+
+  // *************************************
+  // ***            EVENTOS            ***
+  // *************************************
+
+  test0(event){
+      console.log('Event click: ', event);
+      this.myVar1="Mundo";
+      console.log('SUMA: ', this.myVar2 + this.myVar3);
+      
+  }
+
+  test1(event){
+    console.log('Event blur: ', event);
+  }
+
+  test2(event){
+    console.log('Event double click: ', event);
+  }
+ 
 }
