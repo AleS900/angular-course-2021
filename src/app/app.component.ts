@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angular2021';
-
+  myStatus = 'my status';
   /*
   // ***************************************************************************
   //
@@ -273,5 +273,15 @@ export class AppComponent {
       .filter(item => item % 2 !== 0)
       .join('-');
     console.log('Exercise 2: ', exercise2);
+  }
+
+  //---------------------------------------------------------------------------------
+
+  // *************************************
+  // ***        INPUTS & OUTPUTS       ***
+  // *************************************
+
+  printDataSantiagoComp(event: any){
+      console.log('SANTIAGO COMP: ', event);
   }
 }

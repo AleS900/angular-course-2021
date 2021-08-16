@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'savc-comp',
@@ -7,10 +7,21 @@ import { Component, Input } from '@angular/core';
 })
 export class Test1Component {
   // *************************************
-  // ***            INPUTS             ***
+  // ***        INPUTS & OUTPUTS       ***
   // *************************************
 
   @Input('status') statusTest: string = 'working';
+
+  @Output('onSendData') sendData = new EventEmitter(null);
+
+  onClickTest(event: any) {
+    console.log('EVENT CLICK', event);
+
+    this.sendData.emit({
+      name: 'Santiago',
+      status: 'busy'
+    });
+  }
 
   constructor() {}
 }
