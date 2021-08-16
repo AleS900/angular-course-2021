@@ -276,4 +276,12 @@ export class AppComponent {
   printDataSantiagoComp(event: any) {
     console.log('SANTIAGO COMP: ', event);
   }
+
+  printDataExercise5(event: any) {
+    console.log('E5 COMP: ', event);
+  }
+
+  printDataExercise5Corrected(event) {
+    console.log('CHILD COMP SEND DATA: ', event);
+  }
 }
