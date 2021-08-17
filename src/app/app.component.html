@@ -1,16 +1,17 @@
 <p>App Component</p>
 <savc-comp [status]="myStatus" (onSendData)="printDataSantiagoComp($event)">
-</savc-comp>
+</savc-comp><br>
 
 <app-test2 
     name="Alejandro( Juan )" 
     lastName="Céspedes (Gutiérrez)"
     (onGeneralDataCORRECTED)="printDataExercise5Corrected($event)" 
     (onGeneralData)="printDataExercise5($event)">
-</app-test2>
+</app-test2><br>
 
-<savc-comp3>
-
+<input type="text" [(ngModel)]="myStatus"><br>
+<savc-comp3 
+    [name]="myStatus">
 </savc-comp3>
 
 <!-- button onclick="">do click </button -->
