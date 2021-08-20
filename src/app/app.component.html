@@ -13,11 +13,59 @@
 <button (click)="sw = !sw"> SHOW TEST3</button>
 <br><br>
 
-<div *ngIf="sw">
+<!--
+  // *************************************
+  // ***           DIRECTIVES          ***
+  // *************************************
+-->
+
+<!--
+    ngIf= Dada una condición se muestra o no el 
+    componente:
+
+    *Diferencia ngIf vs hidden:
+    ngIf destruye por completo nuestro componenete 
+    y hidden solo lo oculta
+-->
+<!--div *ngIf = "sw" -->
+<div [hidden]="sw">
     <savc-comp3 
         [name]="myNameTest">
     </savc-comp3>
 </div>
+
+<!-- 
+    ngFor: genera una repiticíon de elementos/
+    coponentes dada ua condición
+-->
+<ul>
+    <li *ngFor="let item of [1,2,3,4,5,6]">{{item}}</li>
+    <!-- 
+        Donde item es una el nombre de nuestra
+        variable.
+    -->
+    <!--  
+        LISTA MANUAL
+    <li>first</li>
+    <li>second</li>
+    <li>third</li>
+    -->
+    <br>
+    <li *ngFor="let item of ['first','second','third']; let i = index">
+        {{item}} {{i}}
+    </li>
+</ul>
+
+
+<input type="text" [(ngModel)]="color">
+<ul [ngSwitch]="color">
+    <li *ngSwitchCase="'red'">RED</li>
+    <li *ngSwitchCase="'yellow'">YELLOW</li>
+    <li *ngSwitchCase="'blue'">BLUE</li>
+    <li *ngSwitchCaseDefault>NO COLOR SELECTED</li>
+</ul>
+
+
 
 
 <!-- button onclick="">do click </button -->
