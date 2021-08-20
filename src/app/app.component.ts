@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +10,14 @@ export class AppComponent {
   myStatus = 'my status';
   myNameTest = 'my name';
   sw=true;
+  @Input() nameList = [
+    {name:'Juan', lastName:'Gutiérrez'},
+    {name:'Santiago', lastName:'Vargas'},
+    {name:'Gabriel', lastName:'Claure'},
+    {name:'Natalia', lastName:'Velarde'},
+    {name:'Daniel', lastName:'Zabalaga'},
+    {name:'Andrés', lastName:'Céspedes'}
+  ] 
   /*
   // ***************************************************************************
   //

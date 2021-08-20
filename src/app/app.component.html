@@ -61,7 +61,10 @@
 
         <!--EJEMPLO 3 NGFOR-->
         <li *ngFor="let item of ['first','second','third']">
-            <savc-comp [status]="myStatus" (onSendData)="printDataSantiagoComp($event)" *ngIf="item !== 'first'">
+            <savc-comp 
+                [status]="myStatus" 
+                (onSendData)="printDataSantiagoComp($event)" 
+                *ngIf="item !== 'first'">
             </savc-comp>
         </li>
     </ul>
@@ -106,6 +109,31 @@
         NO SE PUEDE COMBINAR DIRECTIVAS EN UN SOLO ELEMENTO, SI SE PUEDE
         ANIDAR PERO NO COMBINAR
     -->
+
+    <!-- 
+        TAREA 2 08/11/2021:
+        Mostrar una lista de personas dinámicamente 
+        con *ngFor mediante un componente ingresando 
+        name y lastName
+        [
+            {name: 'juan', lastName: 'gutierrez'},
+            {name: maria, lastName: 'quiroz'},
+            {name: marco, lastName: 'paredes'},
+            {name: pedro, lastName: mamani}
+        ]
+    -->
+    <ul style="border: 5px #FF0080 solid;">
+    TAREA 2 08/11/2021:
+    Mostrar una lista de personas dinámicamente 
+    con *ngFor mediante un componente ingresando 
+    name y lastName:<br><br>
+        LISTA DE NOMBRES
+        <br><br>
+        <li *ngFor="let item of nameList">
+            {{item.name}} {{item.lastName}}
+        </li>
+    </ul>
+
 </div>
 
 
