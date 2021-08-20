@@ -9,9 +9,15 @@
     (onGeneralData)="printDataExercise5($event)">
 </app-test2><br>
 
-<input type="text" [(ngModel)]="myStatus"><br>
-<savc-comp3 
-    [name]="myStatus">
-</savc-comp3>
+<input type="text" [(ngModel)]="myNameTest">
+<button (click)="sw = !sw"> SHOW TEST3</button>
+<br><br>
+
+<div *ngIf="sw">
+    <savc-comp3 
+        [name]="myNameTest">
+    </savc-comp3>
+</div>
+
 
 <!-- button onclick="">do click </button -->

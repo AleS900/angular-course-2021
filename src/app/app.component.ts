@@ -9,6 +9,7 @@ export class AppComponent {
   title = 'angular2021';
   myStatus = 'my status';
   myNameTest = 'my name';
+  sw=true;
   /*
   // ***************************************************************************
   //
