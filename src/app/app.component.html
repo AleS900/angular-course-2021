@@ -2,11 +2,8 @@
 <savc-comp [status]="myStatus" (onSendData)="printDataSantiagoComp($event)">
 </savc-comp><br>
 
-<app-test2 
-    name="Alejandro( Juan )" 
-    lastName="Céspedes (Gutiérrez)"
-    (onGeneralDataCORRECTED)="printDataExercise5Corrected($event)" 
-    (onGeneralData)="printDataExercise5($event)">
+<app-test2 name="Alejandro( Juan )" lastName="Céspedes (Gutiérrez)"
+    (onGeneralDataCORRECTED)="printDataExercise5Corrected($event)" (onGeneralData)="printDataExercise5($event)">
 </app-test2><br>
 
 <input type="text" [(ngModel)]="myNameTest">
@@ -29,42 +26,87 @@
 -->
 <!--div *ngIf = "sw" -->
 <div [hidden]="sw">
-    <savc-comp3 
-        [name]="myNameTest">
+    <savc-comp3 [name]="myNameTest">
     </savc-comp3>
-</div>
+</div><br>
 
-<!-- 
-    ngFor: genera una repiticíon de elementos/
-    coponentes dada ua condición
--->
-<ul>
-    <li *ngFor="let item of [1,2,3,4,5,6]">{{item}}</li>
-    <!-- 
-        Donde item es una el nombre de nuestra
-        variable.
-    -->
-    <!--  
-        LISTA MANUAL
-    <li>first</li>
-    <li>second</li>
-    <li>third</li>
-    -->
+
+<div style="border: 5px #FFD200 solid;">
     <br>
-    <li *ngFor="let item of ['first','second','third']; let i = index">
-        {{item}} {{i}}
-    </li>
-</ul>
+    This is not My Fourth Component AleS_900<br>
+    This is only a Divisor Framework
+    <!-- 
+        ngFor: genera una repiticíon de elementos/
+        coponentes dada una condición
+    -->
+    <ul>
+        <!--EJEMPLO 1 NGFOR-->
+        <li *ngFor="let item of [1,2,3,4,5,6]">{{item}}</li>
+        <!-- 
+             Donde item es una el nombre de nuestra
+             variable.
+         -->
+        <!--  
+                LISTA MANUAL
+         <li>first</li>
+         <li>second</li>
+        <li>third</li>
+        -->
+        <br>
 
+        <!--EJEMPLO 2 NGFOR-->
+        <li *ngFor="let item of ['first','second','third']; let i = index">
+            {{item}} {{i}}
+        </li><br>
 
-<input type="text" [(ngModel)]="color">
-<ul [ngSwitch]="color">
-    <li *ngSwitchCase="'red'">RED</li>
-    <li *ngSwitchCase="'yellow'">YELLOW</li>
-    <li *ngSwitchCase="'blue'">BLUE</li>
-    <li *ngSwitchCaseDefault>NO COLOR SELECTED</li>
-</ul>
+        <!--EJEMPLO 3 NGFOR-->
+        <li *ngFor="let item of ['first','second','third']">
+            <savc-comp [status]="myStatus" (onSendData)="printDataSantiagoComp($event)" *ngIf="item !== 'first'">
+            </savc-comp>
+        </li>
+    </ul>
 
+    <!-- 
+        ngSwitch: genera un componente cuando
+        recibe la entrada adecuada
+    -->
+    <!--EJEMPLO 1 NGSWITCH-->
+    <input type="text" [(ngModel)]="color" >
+    <ul [ngSwitch]="color">
+        COLOR :
+        <li *ngSwitchCase="'red'">RED</li>
+        <li *ngSwitchCase="'yellow'">YELLOW</li>
+        <li *ngSwitchCase="'blue'">BLUE</li>
+        <li *ngSwitchCase="'green'">GREEN</li>
+        <li *ngSwitchCaseDefault>NO COLOR SELECTED</li>
+    </ul>
+
+    <!--EJEMPLO 2 NGSWITCH-->
+    <ul [ngSwitch]="color">
+        COLOR :
+        <li *ngSwitchCase="'red'">
+            <savc-comp [status]="myStatus" (onSendData)="printDataSantiagoComp($event)">
+            </savc-comp>
+        </li>
+        <li *ngSwitchCase="'green'">
+            <app-test2 name="Alejandro( Juan )" lastName="Céspedes (Gutiérrez)"
+                (onGeneralDataCORRECTED)="printDataExercise5Corrected($event)"
+                (onGeneralData)="printDataExercise5($event)">
+            </app-test2><br>
+        </li>
+        <li *ngSwitchCase="'blue'">
+            <savc-comp3 [name]="myNameTest">
+            </savc-comp3>
+        </li>
+        <li *ngSwitchCaseDefault>
+            NO COLOR SELECTED
+        </li>
+    </ul>
+    <!-- 
+        NO SE PUEDE COMBINAR DIRECTIVAS EN UN SOLO ELEMENTO, SI SE PUEDE
+        ANIDAR PERO NO COMBINAR
+    -->
+</div>
 
 
 
