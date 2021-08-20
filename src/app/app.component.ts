@@ -9,6 +9,8 @@ export class AppComponent {
   title = 'angular2021';
   myStatus = 'my status';
   myNameTest = 'my name';
+  color = 'colorRandom';
+  font = '50';
   sw=true;
   @Input() nameList = [
     {name:'Juan', lastName:'Gutiérrez'},

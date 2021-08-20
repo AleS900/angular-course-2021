@@ -12,7 +12,7 @@
 
 <!--
   // *************************************
-  // ***           DIRECTIVES          ***
+  // ***     STRUCTURAL DIRECTIVES     ***
   // *************************************
 -->
 
@@ -99,7 +99,7 @@
             </savc-comp3>
         </li>
         <li *ngSwitchCaseDefault>
-            NO COLOR SELECTED
+            Orange
         </li>
     </ul>
     <!-- 
@@ -181,5 +181,77 @@
 <ng-container *ngIf="sw">
     <p>NG CONTAINER</p>
 </ng-container>
+
+<!--
+  // *************************************
+  // ***      ATTRIBUTE DIRECTIVES     ***
+  // *************************************
+  
+    Una directiva de atributo cambia la 
+    apariencia o el comportamiento de un 
+    elemento DOM.
+
+-->
+
+<!--
+    Directiva de nombre Style:
+    Cuando se quiere modificar un solo atributo,
+    es posible hacerlo para más pero es una mala
+    práctica.
+-->
+<input type="text" [(ngModel)]="color" > 
+<div [style.border]= "'5px solid ' + color">
+  MY Div With Styles
+</div>
+<br>
+
+<input type="number" [(ngModel)]="font" > 
+<p [style.fontSize.px]="font">
+    My "P" With style
+</p>
+
+<!--
+    Directiva de nombre ngStyle
+    Cuando se quiere modificar más de un solo 
+    atributo.
+-->
+<p [ngStyle]="{
+    'background': color, 
+    'border': '5px gray solid'}"
+>
+    My "P" With ngStyle
+</p>
+
+<!--
+    Directiva de nombre class:
+    Cuando se quiere modificar una sola clase,
+    es posible hacerlo para más pero es una mala
+    práctica.
+-->
+<div [class.clr1]="color === 'hola'"> 
+    My Div With Class
+</div>
+
+<!--
+    Directiva de nombre ngClass
+    Cuando se quiere modificar más de una sola 
+    calse.
+-->
+<div [ngClass]="{
+'clr1': color === 'hola0',
+'clr2': color === 'hola1',
+'clr3': color === 'hola2',
+'clr4': color === 'hola3',
+'clr5': color === 'hola4',
+'clr6': color === 'hola5',
+'clr7': color === 'hola6',
+'clr8': color === 'hola7',
+'clr9': color === 'hola8',
+'clr10': color === 'hola9',
+'clr11': color === 'hola10',
+'clr12': color === 'hola11'
+}"> 
+    My Div With ngClass
+</div>
 
 <!-- button onclick="">do click </button -->
