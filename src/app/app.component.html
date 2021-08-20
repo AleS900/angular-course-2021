@@ -24,8 +24,8 @@
     ngIf destruye por completo nuestro componenete 
     y hidden solo lo oculta
 -->
-<!--div *ngIf = "sw" -->
-<div [hidden]="sw">
+<!--div [hidden] = "sw" -->
+<div *ngIf="sw">
     <savc-comp3 [name]="myNameTest">
     </savc-comp3>
 </div><br>
@@ -61,10 +61,7 @@
 
         <!--EJEMPLO 3 NGFOR-->
         <li *ngFor="let item of ['first','second','third']">
-            <savc-comp 
-                [status]="myStatus" 
-                (onSendData)="printDataSantiagoComp($event)" 
-                *ngIf="item !== 'first'">
+            <savc-comp [status]="myStatus" (onSendData)="printDataSantiagoComp($event)" *ngIf="item !== 'first'">
             </savc-comp>
         </li>
     </ul>
@@ -123,19 +120,66 @@
         ]
     -->
     <ul style="border: 5px #FF0080 solid;">
-    TAREA 2 08/11/2021:
-    Mostrar una lista de personas dinámicamente 
-    con *ngFor mediante un componente ingresando 
-    name y lastName:<br><br>
-        LISTA DE NOMBRES
+        TAREA 2 08/11/2021:
+        Mostrar una lista de personas dinámicamente
+        con *ngFor mediante un componente ingresando
+        name y lastName:<br><br>
+        LISTA DE NOMBRES:
         <br><br>
         <li *ngFor="let item of nameList">
             {{item.name}} {{item.lastName}}
         </li>
     </ul>
 
+</div><br>
+
+<button (click)="sw = !sw"> SHOW TEST3</button><br><br>
+
+<div *ngIf="sw else myVarElse">
+    <savc-comp3 [name]="myNameTest">
+    </savc-comp3>
+</div><br>
+
+<div #myDiv1>
+    <p>My Div 1</p>
 </div>
 
+<!--
+    NG TEMPLATE
+-->
+<ng-template #myVarElse>
+    <p>It's my Template</p>
+    <p>It's my Template Part 2</p>
+</ng-template>
+<!-- 
+    En caso de Componentes esto no funciona
+    las variables de entorno sirven para otra cosa
+-->
 
+
+<!--
+    NG CONTENT
+    Referencia a elementos dentro de otro componente
+-->
+<app-test2 name="Alejandro( Juan )" lastName="Céspedes (Gutiérrez)"
+    (onGeneralDataCORRECTED)="printDataExercise5Corrected($event)" (onGeneralData)="printDataExercise5($event)">
+    <p>
+        Mi propio contenido
+    </p>
+    <button>
+        Mi propio botón
+    </button>
+</app-test2><br>
+
+
+<!--
+    NG CONTAINER
+    Se usa con directivas estrucutrales, reemplaza en
+    lugares donde exiten directivas estrucutrales
+-->
+<button (click)="sw = !sw"> SHOW TEST3</button>
+<ng-container *ngIf="sw">
+    <p>NG CONTAINER</p>
+</ng-container>
 
 <!-- button onclick="">do click </button -->
