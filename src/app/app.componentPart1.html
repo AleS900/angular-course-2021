@@ -1,0 +1,302 @@
+<p>App Component</p>
+<savc-comp [status]="myStatus" (onSendData)="printDataSantiagoComp($event)">
+</savc-comp><br>
+
+<app-test2 name="Alejandro( Juan )" lastName="Céspedes (Gutiérrez)"
+    (onGeneralDataCORRECTED)="printDataExercise5Corrected($event)" (onGeneralData)="printDataExercise5($event)">
+</app-test2><br>
+
+<input type="text" [(ngModel)]="myNameTest">
+<button (click)="sw = !sw"> SHOW TEST3</button>
+<br><br>
+
+<!--
+  // *************************************
+  // ***     STRUCTURAL DIRECTIVES     ***
+  // *************************************
+-->
+
+<!--
+    ngIf= Dada una condición se muestra o no el 
+    componente:
+
+    *Diferencia ngIf vs hidden:
+    ngIf destruye por completo nuestro componenete 
+    y hidden solo lo oculta
+-->
+<!--div [hidden] = "sw" -->
+<div *ngIf="sw">
+    <savc-comp3 [name]="myNameTest">
+    </savc-comp3>
+</div><br>
+
+<!------------------------------------------------------------------------->
+
+<div style="border: 5px #FFD200 solid;">
+    <br>
+    This is not My Fourth Component AleS_900<br>
+    This is only a Divisor Framework
+    <!-- 
+        ngFor: genera una repiticíon de elementos/
+        coponentes dada una condición
+    -->
+    <ul>
+        <!--EJEMPLO 1 NGFOR-->
+        <li *ngFor="let item of [1,2,3,4,5,6]">{{item}}</li>
+        <!-- 
+             Donde item es una el nombre de nuestra
+             variable.
+         -->
+        <!--  
+                LISTA MANUAL
+         <li>first</li>
+         <li>second</li>
+        <li>third</li>
+        -->
+        <br>
+
+        <!--EJEMPLO 2 NGFOR-->
+        <li *ngFor="let item of ['first','second','third']; let i = index">
+            {{item}} {{i}}
+        </li><br>
+
+        <!--EJEMPLO 3 NGFOR-->
+        <li *ngFor="let item of ['first','second','third']; let i=index;">
+            <savc-comp 
+            [status]="myStatus" 
+            (onSendData)="printDataSantiagoComp($event)" 
+            *ngIf="item !== 'first'">
+            </savc-comp>
+        </li>
+    </ul>
+
+    <!-- 
+        ngSwitch: genera un componente cuando
+        recibe la entrada adecuada
+    -->
+    <!--EJEMPLO 1 NGSWITCH-->
+    <input type="text" [(ngModel)]="color" >
+    <ul [ngSwitch]="color">
+        COLOR :
+        <li *ngSwitchCase="'red'">RED</li>
+        <li *ngSwitchCase="'yellow'">YELLOW</li>
+        <li *ngSwitchCase="'blue'">BLUE</li>
+        <li *ngSwitchCase="'green'">GREEN</li>
+        <li *ngSwitchCaseDefault>NO COLOR SELECTED</li>
+    </ul>
+
+    <!--EJEMPLO 2 NGSWITCH-->
+    <ul [ngSwitch]="color">
+        COLOR :
+        <li *ngSwitchCase="'red'">
+            <savc-comp [status]="myStatus" (onSendData)="printDataSantiagoComp($event)">
+            </savc-comp>
+        </li>
+        <li *ngSwitchCase="'green'">
+            <app-test2 name="Alejandro( Juan )" lastName="Céspedes (Gutiérrez)"
+                (onGeneralDataCORRECTED)="printDataExercise5Corrected($event)"
+                (onGeneralData)="printDataExercise5($event)">
+            </app-test2><br>
+        </li>
+        <li *ngSwitchCase="'blue'">
+            <savc-comp3 [name]="myNameTest">
+            </savc-comp3>
+        </li>
+        <li *ngSwitchCaseDefault>
+            Orange
+        </li>
+    </ul>
+    <!-- 
+        NO SE PUEDE COMBINAR DIRECTIVAS EN UN SOLO ELEMENTO, SI SE PUEDE
+        ANIDAR PERO NO COMBINAR
+    -->
+
+    <!-- 
+        TAREA 2 08/11/2021:
+        Mostrar una lista de personas dinámicamente 
+        con *ngFor mediante un componente ingresando 
+        name y lastName
+        [
+            {name: 'juan', lastName: 'gutierrez'},
+            {name: maria, lastName: 'quiroz'},
+            {name: marco, lastName: 'paredes'},
+            {name: pedro, lastName: mamani}
+        ]
+    -->
+    <ul style="border: 5px #FF0080 solid;">
+        TAREA 2 08/11/2021:
+        Mostrar una lista de personas dinámicamente
+        con *ngFor mediante un componente ingresando
+        name y lastName:<br><br>
+        LISTA DE NOMBRES:
+        <br><br>
+        <li *ngFor="let item of nameList">
+            {{item.name}} {{item.lastName}}
+        </li>
+    </ul>
+
+</div><br>
+
+<!------------------------------------------------------------------------->
+
+<div style="border: 5px violet solid;"><br>
+
+    <button (click)="sw = !sw"> SHOW TEST3</button><br><br>
+
+    <div *ngIf="sw else myVarElse">
+        <savc-comp3 [name]="myNameTest">
+        </savc-comp3>
+    </div><br>
+
+    <div #myDiv1>
+        <p>My Div 1</p>
+    </div>
+
+    <!--
+        NG TEMPLATE
+    -->
+    <ng-template #myVarElse>    
+        <p>It's my Template</p>
+        <p>It's my Template Part 2</p>
+    </ng-template>
+    <!-- 
+        En caso de Componentes esto no funciona
+        las variables de entorno sirven para otra cosa
+    -->
+
+
+    <!--
+        NG CONTENT
+        Referencia a elementos dentro de otro componente
+    -->
+    <app-test2 
+        name="Alejandro( Juan )" 
+        lastName="Céspedes (Gutiérrez)"
+        (onGeneralDataCORRECTED)="printDataExercise5Corrected($event)" (onGeneralData)="printDataExercise5($event)">
+        <p>
+            Mi propio contenido
+        </p>
+        <button>
+            Mi propio botón
+        </button>
+    </app-test2><br>
+
+
+    <!--
+        NG CONTAINER
+        Se usa con directivas estrucutrales, reemplaza en
+        lugares donde exiten directivas estrucutrales
+    -->
+    <button (click)="sw = !sw"> SHOW TEST3</button>
+    <ng-container *ngIf="sw">
+        <p>NG CONTAINER</p>
+    </ng-container>
+
+</div><br>
+
+<!------------------------------------------------------------------------->
+
+<div style="border: 5px cyan solid;">
+    <!--
+    // *************************************
+    // ***      ATTRIBUTE DIRECTIVES     ***
+    // *************************************
+  
+        Una directiva de atributo cambia la 
+        apariencia o el comportamiento de un 
+        elemento DOM.
+
+    -->
+
+    <!--
+        Directiva de nombre Style:
+        Cuando se quiere modificar un solo atributo,
+        es posible hacerlo para más pero es una mala
+        práctica.
+    -->
+    <input type="text" [(ngModel)]="color" > 
+    <div [style.border]= "'5px solid ' + color">
+        MY Div With Styles
+    </div><br>
+
+    <input type="number" [(ngModel)]="font" > 
+    <p [style.fontSize.px]="font">
+        My "P" With style
+    </p>
+
+    <!--
+        Directiva de nombre ngStyle
+        Cuando se quiere modificar más de un solo 
+        atributo.
+    -->
+    <p [ngStyle]="{
+        'background': color, 
+        'border': '5px gray solid'}"
+    >
+        My "P" With ngStyle
+    </p>
+
+    <!--
+        Directiva de nombre class:
+        Cuando se quiere modificar una sola clase,
+        es posible hacerlo para más pero es una mala
+        práctica.
+    -->
+    <div [class.clr1]="color === 'hola'"> 
+        My Div With Class
+    </div>
+
+    <!--
+        Directiva de nombre ngClass
+        Cuando se quiere modificar más de una sola 
+        calse.
+    -->
+    <div [ngClass]="{   
+        'clr1': color === 'hola0',
+        'clr2': color === 'hola1',
+        'clr3': color === 'hola2',
+        'clr4': color === 'hola3',
+        'clr5': color === 'hola4',
+        'clr6': color === 'hola5',
+        'clr7': color === 'hola6',
+        'clr8': color === 'hola7',
+        'clr9': color === 'hola8',
+        'clr10': color === 'hola9',
+        'clr11': color === 'hola10',
+        'clr12': color === 'hola11'
+    }"> 
+        My Div With ngClass
+    </div>
+
+</div>
+
+
+<!-- 
+        TAREA 5 08/11/2021:
+        Utilizando *ngFor pintar de distinto color
+        el backround de cada elemento, dependiendo si es par 
+        o impar.
+-->
+
+<ng-container *ngFor="let item of ['first','second','third','fourth','fifth']; let i = index;" >
+    <ng-template #colorsHW>
+        <ul>
+            <li [style.background]="'pink'">
+                <savc-comp      
+                    [status]="myStatus" 
+                    (onSendData)="printDataSantiagoComp($event)" >
+                </savc-comp>
+            </li>
+        </ul>
+    </ng-template> 
+    <ul *ngIf="i%2 !== 0; else colorsHW">
+        <li [style.background]="'violet'">
+            <savc-comp      
+                [status]="myStatus" 
+                (onSendData)="printDataSantiagoComp($event)" >
+            </savc-comp>
+        </li>
+    </ul>
+<ng-container>
+
+<!-- button onclick="">do click </button -->

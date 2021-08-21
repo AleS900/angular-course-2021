@@ -1,4 +1,6 @@
 import { Component, Input } from '@angular/core';
+import {of} from 'rxjs';
+import { filter, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +14,7 @@ export class AppComponent {
   color = 'colorRandom';
   font = '50';
   sw=true;
+  tictock = of([1,2,3,4,5]);
   @Input() nameList = [
     {name:'Juan', lastName:'Gutiérrez'},
     {name:'Santiago', lastName:'Vargas'},
@@ -70,6 +73,9 @@ export class AppComponent {
   // *************************************
 
   constructor() {
+    console.log('--------------------------------------------------------------');
+    console.log('----------------____________PARTE 1____________---------------');
+    console.log('--------------------------------------------------------------');
     /* EJEMPLO 1: Multiplicar cada elemento por 2
 
         map: Teniendo un array se obtiene uno nuevo
@@ -277,6 +283,41 @@ export class AppComponent {
       .filter(item => item % 2 !== 0)
       .join('-');
     console.log('Exercise 2: ', exercise2);
+
+
+    //---------------------------------------------------------------------------------
+    console.log('--------------------------------------------------------------');
+    console.log('----------------____________PARTE 2____________---------------');
+    console.log('--------------------------------------------------------------');
+
+    // *************************************
+    // ***              RJXS             ***
+    // *************************************
+
+    // PERSON A
+      this.tictock.pipe(
+        map(s => s.join('-')),
+        map(s => s + ' Soy diferente'),
+      ).subscribe(v => {
+        console.log('PERSON A VIDEO: ', v);
+      });
+
+    // PERSON B
+      this.tictock.pipe(
+        filter((v:any) => v[0]%2 === 1)
+      ).subscribe(v => {
+        console.log('PERSON B VIDEO: ', v);
+      });
+
+    // PERSON C
+      this.tictock.subscribe(v => {
+          console.log('PERSON C VIDEO: ',v);
+      });
+
+  }
+
+  onAddVideo(){
+      this.tictock = of ([6,7,8,9,10])
   }
 
   //---------------------------------------------------------------------------------
