@@ -17,3 +17,16 @@ de fondo cuando el mouse sale del elemento:<br>
 <div *ngIfAleS="sw"  (test)="test100($event)">
   <p>My Own Strcutural Directive </p>
 </div>
+  ------------------------------------------------------------------------------- 
+  <br><br>
+
+<div #myDiv1>content</div>
+<p>{{myDiv1}}</p>
+  
+<!-- Se puede ingresar a los elemntos de un componente con variables locales-->
+<savc-comp #myCompAleS></savc-comp><br>
+  
+<input type="text" #myDiv2 value="asdasd">
+<p>{{myDiv2}}</p>
+  
+<button (click)="onShowLocalVars()">show local vars</button>
