@@ -26,9 +26,10 @@ export class AppComponent {
     {name:'Daniel', lastName:'Zabalaga'},
     {name:'Andrés', lastName:'Céspedes'}
   ];
-  @ViewChild('myDiv1') myDiv1: ElementRef;
-  @ViewChild('myDiv2') myDiv2: ElementRef;
+  @ViewChild('myDiv1') myDiv1= ElementRef;
+  @ViewChild("myDiv2") myDiv2= ElementRef;
   @ViewChild('myCompAleS') myCompAleS: any;
+  @ViewChild("myDiv3") myDivHW = ElementRef;
   /*
   // ***************************************************************************
   //
@@ -386,6 +387,10 @@ export class AppComponent {
     this.myCompAleS.onClickTest();
   
     this.myDiv2.nativeElement.value = 'Santiago';
+  }
+
+  modifyBorder(){
+    this.myDivHW.nativeElement.className = "brd1"
   }
 
 }
