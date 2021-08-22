@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import {of} from 'rxjs';
-import { filter, map } from 'rxjs/operators';
+import {BehaviorSubject, of, Subscription} from 'rxjs';
+import { filter, map,delay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -15,6 +15,9 @@ export class AppComponent {
   font = '50';
   sw=true;
   tictock = of([1,2,3,4,5]);
+  personASub : Subscription;
+  video = 1;
+  tictock2 = new BehaviorSubject(this.video);
   @Input() nameList = [
     {name:'Juan', lastName:'Gutiérrez'},
     {name:'Santiago', lastName:'Vargas'},
@@ -294,6 +297,7 @@ export class AppComponent {
     // ***              RJXS             ***
     // *************************************
 
+    // OBSERVER OF
     // PERSON A
       this.tictock.pipe(
         map(s => s.join('-')),
@@ -313,12 +317,37 @@ export class AppComponent {
       this.tictock.subscribe(v => {
           console.log('PERSON C VIDEO: ',v);
       });
+      
+    // OBSERVER WITH BEHAVIORSUBJECT
+    // PERSON A
+      this.personASub = this.tictock2.pipe(
+        filter(s => s%2 === 0)
+      ).subscribe(v => {
+        console.log('PERSON A VIDEO v2: ', v);
+      });
 
+      // PERSON B
+      this.tictock2.pipe(
+        delay(4000)
+      ).subscribe(v => {
+        console.log('PERSON B VIDEO v2: ', v);
+      });
+
+      // PERSON C
+      this.tictock2.subscribe(v => {
+        console.log('PERSON C VIDEO v2: ', v);
+      });
   }
 
   onAddVideo(){
-      this.tictock = of ([6,7,8,9,10])
-  }
+      this.video ++
+      this.tictock2.next(this.video);    
+    }
+  
+    person1Unsubscribe(){
+       this.personASub.unsubscribe();
+       console.log('PERSON A SE DESUbSCRIBE')
+    }
 
   //---------------------------------------------------------------------------------
 
@@ -334,7 +363,7 @@ export class AppComponent {
     console.log('E5 COMP: ', event);
   }
 
-  printDataExercise5Corrected(event) {
+  printDataExercise5Corrected(event:any) {
     console.log('CHILD COMP SEND DATA: ', event);
   }
 }
