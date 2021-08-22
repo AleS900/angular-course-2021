@@ -11,5 +11,9 @@ de fondo cuando el mouse sale del elemento:<br>
    (outputTest)="test($event)"
   >Mi Primera Directiva de Atributo </p>
 
+  -------------------------------------------------------------------------------  <br><br>
 
-<savc-comp></savc-comp>
+<input type="checkbox" [(ngModel)]="sw"> ngIfAleS
+<div *ngIfAleS="sw"  (test)="test100($event)">
+  <p>My Own Strcutural Directive </p>
+</div>

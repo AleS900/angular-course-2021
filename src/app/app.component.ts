@@ -371,4 +371,8 @@ export class AppComponent {
     console.log('CCCCCCCCCCCCCCCCCCC', event);
   }
 
+  test100(event:any){
+    console.log('234234234234234', event);
+  }
+
 }

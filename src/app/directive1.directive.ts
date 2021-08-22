@@ -1,5 +1,5 @@
 import { Directive, ElementRef, EventEmitter, HostListener, Input, OnChanges, Output } from '@angular/core';
-
+// DIRECTIVA DE ATRIBUTO
 @Directive({
   selector: '[directive1Test]'
 })
@@ -26,7 +26,7 @@ export class Directive1Directive implements OnChanges{
   */
   @HostListener('click') onClick() {
     console.log('BBBBBBBBBBBBBBBBBB',this.directive1Test);
-    this.setBackgroundColor(this.directive1Test);
+    this.setBackgroundColor('cyan');
   }
 
   @HostListener('mouseleave') onMouseleave() {
@@ -51,7 +51,7 @@ export class Directive1Directive implements OnChanges{
     this.element.nativeElement.style.backgroundColor = color;
   }
 
-  /*ngOnChanges(changes:any){
-    this.setBackgroundColor(changes.directive1Test.currentValue);
-  }*/
+  ngOnChanges(changes:any){
+    this.setBackgroundColor(changes.directive1Test.Value);
+  }
 }
