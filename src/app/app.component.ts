@@ -26,10 +26,10 @@ export class AppComponent {
     {name:'Daniel', lastName:'Zabalaga'},
     {name:'Andrés', lastName:'Céspedes'}
   ];
-  @ViewChild('myDiv1') myDiv1= ElementRef;
-  @ViewChild("myDiv2") myDiv2= ElementRef;
+  @ViewChild('myDiv1') myDiv1: ElementRef;
+  @ViewChild("myDiv2") myDiv2: ElementRef;
   @ViewChild('myCompAleS') myCompAleS: any;
-  @ViewChild("myDiv3") myDivHW = ElementRef;
+  @ViewChild("myDiv3") myDivHW: ElementRef;
   /*
   // ***************************************************************************
   //
