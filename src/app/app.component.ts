@@ -328,7 +328,7 @@ export class AppComponent {
 
       // PERSON B
       this.tictock2.pipe(
-        delay(4000)
+        //delay(4000)
       ).subscribe(v => {
         console.log('PERSON B VIDEO v2: ', v);
       });
@@ -366,4 +366,9 @@ export class AppComponent {
   printDataExercise5Corrected(event:any) {
     console.log('CHILD COMP SEND DATA: ', event);
   }
+
+  test(event:any){
+    console.log('CCCCCCCCCCCCCCCCCCC', event);
+  }
+
 }

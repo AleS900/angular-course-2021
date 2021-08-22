@@ -1,2 +1,10 @@
-<button (click)="onAddVideo()">add Video</button><br><br>
-<button (click)="person1Unsubscribe()">Uns Person A</button>
+<button directive1Test (click)="onAddVideo()">add Video</button><br><br>
+<button directive1Test (click)="person1Unsubscribe()">Uns Person A</button>
+
+
+<p [directive1Test]="'red'"
+   (outputTest)="test($event)"
+  >Mi Primera Directiva de Atributo </p>
+
+
+<savc-comp></savc-comp>
