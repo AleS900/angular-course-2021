@@ -1,8 +1,13 @@
 <button directive1Test (click)="onAddVideo()">add Video</button><br><br>
-<button directive1Test (click)="person1Unsubscribe()">Uns Person A</button>
+<button directive1Test (click)="person1Unsubscribe()">Uns Person A</button><br><br>
 
+-------------------------------------------------------------------------------<br><br>
+Tarea 2:
+Usando Bananabox modificar en tiempo real el color
+de fondo cuando el mouse sale del elemento:<br>
+<input type="text" [(ngModel)]="color">
 
-<p [directive1Test]="'red'"
+<p [directive1Test]="color"
    (outputTest)="test($event)"
   >Mi Primera Directiva de Atributo </p>
 
