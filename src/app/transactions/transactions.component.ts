@@ -3,15 +3,24 @@ import { Component, Input, OnInit } from '@angular/core';
 @Component({
   selector: 'transactions',
   template: `
-  <div [style.background]=" eth+btc > 10 ? 'brown' : 'gray'"
+  <div [style.background]="mineType === 'PoW'? 'yellow' : 'green'"
        style="float: left; margin: 10px; padding: 10px;">
-	  <p>Date: {{date}}</p>
+	  <p>Date: {{date | dateFormat}}</p>
     <p>From: {{from}}</p>
 	  <p>To: {{to}}</p>
-	  <p>Quantity:{{quantity}}</p>
-    <p>MoneyType:{{moneyType}}</p>
-    <p>MineType:{{mineType}}</p>
-    <p>Miner:{{miner}}</p>
+	  <p>Quantity: {{quantity}}</p>
+    <p>MoneyType: {{moneyType | uppercase}}</p>
+    <p>MineType: {{mineType}}</p>
+    <p>Miner: {{miner}}</p>
+    <button *ngIf="mineType === 'PoS' else myVarElse" 
+            [disabled]="miner > 20">
+            mine
+    </button>
+
+    <ng-template #myVarElse>
+        <button >mine
+        </button>
+    </ng-template>
   </div>
   `,
 })

@@ -7,8 +7,8 @@ import { Component, OnInit,Input } from '@angular/core';
        style="float: left; margin: 10px; padding: 10px;">
 	  <p>Wallet: {{wallet}}</p>
     <p>Nombre: {{name}}</p>
-	  <p>Eth: {{eth}}</p>
-	  <p>Btc:{{btc}}</p>
+	  <p>ETH: {{eth}}</p>
+	  <p>BTC: {{btc}}</p>
   </div>
   `,
 })
