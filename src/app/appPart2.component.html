@@ -1,0 +1,34 @@
+<button directive1Test (click)="onAddVideo()">add Video</button><br><br>
+<button directive1Test (click)="person1Unsubscribe()">Uns Person A</button><br><br>
+
+-------------------------------------------------------------------------------<br><br>
+Tarea 2:
+Usando Bananabox modificar en tiempo real el color
+de fondo cuando el mouse sale del elemento:<br>
+<input type="text" [(ngModel)]="color">
+
+<p [directive1Test]="color"
+   (outputTest)="test($event)"
+  >Mi Primera Directiva de Atributo </p>
+
+  -------------------------------------------------------------------------------  <br><br>
+
+<input type="checkbox" [(ngModel)]="sw"> ngIfAleS
+<div *ngIfAleS="sw"  (test)="test100($event)">
+  <p>My Own Strcutural Directive </p>
+</div>
+  ------------------------------------------------------------------------------- 
+  <br><br>
+
+<div #myDiv1>content</div>
+<p>{{myDiv1}}</p>
+  
+<!-- Se puede ingresar a los elementos de un componente con variables locales-->
+<savc-comp #myCompAleS></savc-comp><br>
+  
+<input type="text" #myDiv2 value="asdasd">
+<p>{{myDiv2}}</p>
+  
+<button (click)="onShowLocalVars()">show local vars</button><br><br>
+<button (click)="modifyBorder()">Modify Class</button><br><br>
+<div #myDiv3> I am the div that will be modify </div>
