@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'transactions',
@@ -13,12 +13,13 @@ import { Component, Input, OnInit } from '@angular/core';
     <p>MineType: {{mineType}}</p>
     <p>Miner: {{miner}}</p>
     <button *ngIf="mineType === 'PoS' else myVarElse" 
-            [disabled]="miner > 20">
+            (click)="onActivated()"
+            [disabled]="miner >= 20">
             mine
     </button>
 
     <ng-template #myVarElse>
-        <button >mine
+        <button (click)="onActivated()">mine
         </button>
     </ng-template>
   </div>
@@ -33,8 +34,12 @@ export class TransactionsComponent{
   @Input() moneyType: string;
   @Input() mineType: string;
   @Input() miner:number;
+  @Output() startTransaction = new EventEmitter();
 
   constructor() { }
 
+  onActivated() {
+    this.startTransaction.emit();
+  }
 
 }
