@@ -5,6 +5,9 @@ import { Component, VERSION } from "@angular/core";
   templateUrl: "./app.component.html"
 })
 export class AppComponent  {
+  test:boolean =true;
+  cont:number=0;
+
   listWallets = [
 
     {wallet: "MARIA123", name: "maria", eth: 0, btc: 2},
@@ -37,8 +40,8 @@ export class AppComponent  {
   };
 
 verifyAllTransactions() {
-  const noTransacciones = this.trans.money.filter(p => p.moneyType === "eth" || "btc");
-  return 0;
+  const noTransacciones = this.test;
+  return noTransacciones;
 }
 
 pagar(info){
@@ -52,9 +55,12 @@ pagar(info){
       info.miner=info.miner+1;
       this.listWallets.find(item => item.wallet === info.from).eth -= info.quantity;
       this.listWallets.find(item => item.wallet === info.to).eth += info.quantity;
-    } 
+    } else if(this.cont>15){
+      this.test = !this.test;
+    } else {
+      this.cont=this.cont+1;
+    }
     
-
 }
 
 }
