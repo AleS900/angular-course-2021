@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Buy1Module } from './buy1/buy1.module';
-import { Buy2Module } from './buy2/buy2.module';
 import { SharedModule } from '../../shared/shared.module';
+import { Buy1Component } from './buy1/buy1.component';
+import { Buy2Component } from './buy2/buy2.component';
 
 @NgModule({
   imports: [
@@ -10,8 +10,8 @@ import { SharedModule } from '../../shared/shared.module';
     SharedModule
   ],
   declarations: [
-    Buy1Module,
-    Buy2Module
+    Buy1Component,
+    Buy2Component
   ]
 })
 export class BuyModule { }
