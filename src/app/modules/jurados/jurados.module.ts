@@ -18,4 +18,4 @@ import { Jurados2Component } from './jurados2/jurados2.component';
     Jurados2Component
   ]
 })
-export class JuradoModule { }
+export class JuradosModule { }
