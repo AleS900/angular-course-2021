@@ -3,3 +3,32 @@
   <app-loader></app-loader>
   <app-card></app-card>
 </div>
+<br>
+
+<div style="border: 5px blue solid;">
+  PIPES IN ANGULAR:
+  <p  style="background : red;" >{{name}}</p>
+
+  <p  style="background : orange;">{{ name | uppercase }}</p>
+
+  <p  style="background : gold;">{{ 'SANTIAGO' | lowercase }}</p>
+
+
+  <p  style="background : yellow;">{{ ['a','b','c','d','e'] | slice:2:4 }}</p>
+
+  <p *ngFor="let item of ['a','b','c','d','e'] | slice:2:4"  style="background : silver;">
+    {{item}}  
+  </p>
+
+  <p  style="background : green;">{{ auxJSON | json }}</p>
+
+  --------------------------------------------------------------
+  
+  <p *ngFor="let item of auxObs$ | async" style="background : cyan;">
+  {{item}}  
+  </p>
+  
+  <button (click)="onAdd()">add</button>
+
+</div>
+
