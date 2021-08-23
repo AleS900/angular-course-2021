@@ -1,0 +1,19 @@
+/*
+    Host:
+    Solo afecta la Host es decir al componente
+*/
+:host {
+  background-color: gold;
+  border: 20px brown solid;
+  width: 100%;
+  height: 150%;
+  position: absolute;
+}
+/*
+    ngDeep:
+    Modificar un elemnto al que no tenemos acceso de manera forzada,
+    se usa para modificar componentes a los que no se puede acceder
+*/
+::ng-deep div{
+  padding: 10px;
+}

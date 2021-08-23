@@ -7,24 +7,24 @@
 
 <div style="border: 5px blue solid;">
   PIPES IN ANGULAR:
-  <p  style="background : red;" >{{name}}</p>
+  <p style="border: 5px red solid">{{name}}</p>
 
-  <p  style="background : orange;">{{ name | uppercase }}</p>
+  <p style="border: 5px green solid">{{ name | uppercase }}</p>
 
-  <p  style="background : gold;">{{ 'SANTIAGO' | lowercase }}</p>
+  <p style="border: 5px orange solid">{{ 'SANTIAGO' | lowercase }}</p>
 
 
-  <p  style="background : yellow;">{{ ['a','b','c','d','e'] | slice:2:4 }}</p>
+  <p style="border: 5px yellow solid">{{ ['a','b','c','d','e'] | slice:2:4 }}</p>
 
-  <p *ngFor="let item of ['a','b','c','d','e'] | slice:2:4"  style="background : silver;">
+  <p *ngFor="let item of ['a','b','c','d','e'] | slice:2:4" style="border: 5px blue solid">
     {{item}}  
   </p>
 
-  <p  style="background : green;">{{ auxJSON | json }}</p>
+  <p style="border: 5px pink solid">{{ auxJSON | json }}</p>
 
   --------------------------------------------------------------
   
-  <p *ngFor="let item of auxObs$ | async" style="background : cyan;">
+  <p *ngFor="let item of auxObs$ | async" style="border: 5px purple solid">
   {{item}}  
   </p>
   
