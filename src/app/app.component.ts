@@ -41,7 +41,7 @@ export class AppComponent  {
 
 verifyAllTransactions() {
   const noTransacciones = this.test;
-  return noTransacciones;
+  return !this.test;
 }
 
 pagar(info){
