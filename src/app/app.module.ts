@@ -6,12 +6,15 @@ import { WalletsComponent } from './wallets/wallets.component';
 import { DatePipe } from './transactions/date.pipe';
 import { TransactionsComponent } from './transactions/transactions.component';
 import { JuradosModule } from './modules/jurados/jurados.module';
+import { VotacionModule } from './modules/votacion/votacion.module';
 
 
 @NgModule({
   imports:      [ 
     BrowserModule, 
-    FormsModule
+    FormsModule,
+    JuradosModule,
+    VotacionModule
   ],
   declarations: [ 
     AppComponent, 
