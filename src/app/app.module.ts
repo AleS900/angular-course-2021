@@ -5,14 +5,13 @@ import { AppComponent } from './app.component';
 import { WalletsComponent } from './wallets/wallets.component';
 import { DatePipe } from './transactions/date.pipe';
 import { TransactionsComponent } from './transactions/transactions.component';
-import { JuradosModule } from './jurados/jurados.module';
+import { JuradosModule } from './modules/jurados/jurados.module';
 
 
 @NgModule({
   imports:      [ 
     BrowserModule, 
-    FormsModule,
-    JuradosModule
+    FormsModule
   ],
   declarations: [ 
     AppComponent, 
