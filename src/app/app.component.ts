@@ -1,6 +1,7 @@
 import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 import {BehaviorSubject, of, Subscription} from 'rxjs';
 import { filter, map,delay } from 'rxjs/operators';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -8,6 +9,7 @@ import { filter, map,delay } from 'rxjs/operators';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  id:number = 3;
   title = 'angular2021';
   myStatus = 'my status';
   myNameTest = 'my name';
@@ -32,7 +34,7 @@ export class AppComponent {
   @ViewChild('myCompAleS') myCompAleS: any;
   @ViewChild("myDiv3") myDivHW: ElementRef;
 
-  constructor(){
+  constructor(private router: Router){
     this.pure(2,3);
     this.pure(10,2);
     this.pure(5,5);
@@ -43,6 +45,9 @@ export class AppComponent {
     this.impure(5,5);
   }
 
+  onGoView2FromTS():void{
+    this.router.navigate(['view2', this.id, 'sub', 33333])
+  }
 
   pure(a:number, b:number){
     console.log(a + b)
