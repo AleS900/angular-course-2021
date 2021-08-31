@@ -20,11 +20,12 @@ import { View2Component } from './view2/view2.component';
 import { View1sub1Component } from './view1/view1sub1/view1sub1.component';
 import { View1sub2Component } from './view1/view1sub2/view1sub2.component';
 import { HomeCompComponent } from './home-comp/home-comp.component';
-import { Home1CompComponent } from './home1-comp/home1-comp.component';
-import { Home2CompComponent } from './home2-comp/home2-comp.component';
+
 import { AdminCompComponent } from './admin-comp/admin-comp.component';
-import { Admin1CompComponent } from './admin1-comp/admin1-comp.component';
-import { Admin2CompComponent } from './admin2-comp/admin2-comp.component';
+import { Home1CompComponent } from './home-comp/home1-comp/home1-comp.component';
+import { Home2CompComponent } from './home-comp/home2-comp/home2-comp.component';
+import { Admin1CompComponent } from './admin-comp/admin1-comp/admin1-comp.component';
+import { Admin2CompComponent } from './admin-comp/admin2-comp/admin2-comp.component';
 
 const routes: Routes = [
   {
@@ -77,6 +78,12 @@ const routes: Routes = [
         path: 'admin2-comp', component: Admin2CompComponent,
       }
     ]
+  },
+  {
+    path: 'home-mod', loadChildren: () => import('./home-mod/home-mod.module').then(m => m.HomeModModule)
+  },
+  {
+    path: 'admin-mod', loadChildren: () => import('./admin-mod/admin-mod.module').then(m => m.AdminModModule)
   }
 ];
 
