@@ -5,15 +5,16 @@ import { HomeCompModComponent } from './home-comp-mod/home-comp-mod.component';
 import { Home1ModComponent } from './home-comp-mod/home1-mod/home1-mod.component';
 import { Home2ModComponent } from './home-comp-mod/home2-mod/home2-mod.component';
 import { SubhomeModComponent } from './subhome-mod/subhome-mod.component';
+
 const routes: Routes = [
-  {path: '', redirectTo: 'home-mod', pathMatch: 'full'},
-  {path: 'home-mod', component: HomeCompModComponent,
+  {path: '', redirectTo: 'home-comp-mod', pathMatch: 'full'},
+  {path: 'home-comp-mod', component: HomeCompModComponent,
   children: [
     {
       path: 'home1-mod', component: Home1ModComponent
     },
     {
-      path: 'hom2e-mod', component: Home2ModComponent
+      path: 'home2-mod', component: Home2ModComponent
     }
   ]
   },
