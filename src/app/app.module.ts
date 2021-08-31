@@ -19,6 +19,12 @@ import { View1Component } from './view1/view1.component';
 import { View2Component } from './view2/view2.component';
 import { View1sub1Component } from './view1/view1sub1/view1sub1.component';
 import { View1sub2Component } from './view1/view1sub2/view1sub2.component';
+import { HomeCompComponent } from './home-comp/home-comp.component';
+import { Home1CompComponent } from './home1-comp/home1-comp.component';
+import { Home2CompComponent } from './home2-comp/home2-comp.component';
+import { AdminCompComponent } from './admin-comp/admin-comp.component';
+import { Admin1CompComponent } from './admin1-comp/admin1-comp.component';
+import { Admin2CompComponent } from './admin2-comp/admin2-comp.component';
 
 const routes: Routes = [
   {
@@ -43,6 +49,34 @@ const routes: Routes = [
   },
   {
     path: 'view3', loadChildren: () => import('./view3/view3.module').then(m => m.View3Module)
+  },
+  {
+    path: 'home-comp', component: HomeCompComponent,
+    children: [
+      {
+        path: '', redirectTo: 'home1-comp', pathMatch: 'full'
+      },
+      {
+        path: 'home1-comp', component: Home1CompComponent,
+      },
+      {
+        path: 'home2-comp', component: Home2CompComponent,
+      }
+    ]
+  },
+  {
+    path: 'admin-comp', component: AdminCompComponent,
+    children: [
+      {
+        path: '', redirectTo: 'admin1-comp', pathMatch: 'full'
+      },
+      {
+        path: 'admin1-comp', component: Admin1CompComponent,
+      },
+      {
+        path: 'admin2-comp', component: Admin2CompComponent,
+      }
+    ]
   }
 ];
 
@@ -57,7 +91,13 @@ const routes: Routes = [
     View1Component,
     View2Component,
     View1sub1Component,
-    View1sub2Component
+    View1sub2Component,
+    HomeCompComponent,
+    Home1CompComponent,
+    Home2CompComponent,
+    AdminCompComponent,
+    Admin1CompComponent,
+    Admin2CompComponent
   ],
   imports: [                 // Aquí van los módulos
     BrowserModule,
