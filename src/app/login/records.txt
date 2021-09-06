@@ -1,0 +1,181 @@
+<!--
+<button (click)="setMessage()">set message</button>
+<button routerLink="../pages">pages</button>
+<button (click)="create()">crear</button>
+<button (click)="delete()">eliminar</button>
+<button (click)="update()">actualizar</button>
+<button (click)="patch()">patch</button>
+
+<app-login1></app-login1>
+<app-login2></app-login2>
+
+
+
+<p>TEMPLATE FORM</p>
+<form #formTemplate="ngForm"
+      (ngSubmit)="onSubmitTemplate(formTemplate)">
+  <input type="text" name="aagggg" ngModel>
+  <input type="text" name="bb" ngModel>
+  <input type="text" name="cc" ngModel>
+  <button type="submit">submit</button>
+</form>
+
+<p>---------REACTIVE FORMS------------------</p>
+
+<input type="text" [formControl]="name">
+<button (click)="onShow()">SHOW</button>
+
+
+<div [formGroup]="formReactive">
+  <input type="text" formControlName="name">
+  <input type="text" formControlName="lastName">
+  <input type="text" formControlName="date">
+</div>
+<button (click)="onShowAll()">SHOW ALL</button>
+-->
+
+<!--
+<input type="text"  [(ngModel)]="aaaaaaa">
+<input type="text"  [(ngModel)]="bbbbbbb">
+<input type="text"  [(ngModel)]="cccccccc">
+<button (click)="adasd()">submit</button>-->
+<!--
+<p>login works!</p>
+<button class="btn btn-danger">
+  asasdas
+</button>
+buttons-checkbox.html
+buttons-checkbox.ts
+<div class="btn-group btn-group-toggle">
+  <label class="btn-primary" ngbButtonLabel>
+    <input type="checkbox" ngbButton > Left (pre-checked)
+  </label>
+  <label class="btn-primary" ngbButtonLabel>
+    <input type="checkbox" ngbButton > Middle
+  </label>
+  <label class="btn-primary" ngbButtonLabel>
+    <input type="checkbox" ngbButton > Right
+  </label>
+</div>
+<ngb-toast [autohide]="false">
+  I am a simple static toast.
+</ngb-toast>
+
+<hr>
+
+<mat-spinner [diameter]="30" [color]="'accent'"></mat-spinner>
+<mat-slider min="1" max="100" step="1" value="50"></mat-slider>
+-->
+
+
+----------------------------------
+
+
+import { Component, OnInit } from '@angular/core';
+import {Test1Service} from "./services/test1.service";
+import {SingletonService} from "./services/singleton.service";
+import {PublicationService} from "./services/publication.service";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+
+@Component({
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss']
+})
+export class LoginComponent implements OnInit {
+
+  name = new FormControl('');
+
+
+  formReactive: FormGroup;
+
+  constructor(private test1Service: Test1Service,
+              private formBuilder: FormBuilder,
+              private singletonService: SingletonService,
+              private publicationService: PublicationService) {
+    console.log(this.test1Service.getItems())
+
+    this.formReactive = this.formBuilder.group({
+      name: '',
+      lastName: ['', [Validators.required]],
+      date: ''
+    });
+
+  }
+
+  ngOnInit(){
+
+    this.formReactive.valueChanges.subscribe(res => {
+      console.log('FORM REACTOVE', res);
+    })
+
+    this.name.valueChanges.subscribe(res => {
+      console.log('CHANGES', res)
+    });
+
+    this.publicationService.getAll()
+      .subscribe(res => {
+        console.log('RESPONSE: ', res);
+      });
+
+  }
+
+  setMessage() {
+    this.singletonService.setMessage('HI FROM LOGIN');
+  }
+
+  update() {
+
+
+    this.publicationService.update('p0001',{
+      "date": "17/82/2021",
+      "description": "update from frontend",
+      "idUser": 2,
+      "imageUrl": "http://fitebase/img.jpg",
+      "userPhotoUrl": "http://fitebase/user1.jpg"
+    } ).subscribe(
+      res => console.log(res))
+  }
+
+  create(){
+
+    this.publicationService.create({
+      "date": "17/82/2021",
+      "description": "soy nuevo",
+      "idUser": 2,
+      "imageUrl": "http://fitebase/img.jpg",
+      "userPhotoUrl": "http://fitebase/user1.jpg"
+    } ).subscribe(
+      res => console.log(res))
+
+  }
+
+  delete(){
+    this.publicationService.delete('p0002').subscribe(
+      res => console.log(res))
+  }
+
+  patch() {
+    this.publicationService.patch('p0001',{
+      "description": "update from frontend patch",
+    } ).subscribe(
+      res => console.log(res))
+  }
+
+  onSubmitTemplate(values:any){
+    console.log('VALUES: ', values)
+  }
+
+  onShow(){
+    console.log(this.name.value)
+  }
+
+  onShowAll(){
+    console.log('DDDDD', this.formReactive.value)
+  }
+}
+
+
+
+
+
