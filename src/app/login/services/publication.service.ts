@@ -6,7 +6,7 @@ import {environment} from "../../../environments/environment";
 @Injectable()
 export class PublicationService {
 
-  url = environment.app.apiBaseUrl;
+  url = "https://facebook-angular-course-default-rtdb.firebaseio.com";
 
   constructor(private http: HttpClient) { }
 

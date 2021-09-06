@@ -18,47 +18,47 @@ export class LoginComponent implements OnInit {
 
   }
 
-    ngOnInit(){
+  ngOnInit(){
 
-      this.publicationService.getAll()
-        .subscribe(res => {
-          console.log('RESPONSE: ', res);
-        });
+    this.publicationService.getAll()
+      .subscribe(res => {
+        console.log('RESPONSE: ', res);
+      });
 
-    }
+  }
 
   setMessage() {
     this.singletonService.setMessage('HI FROM LOGIN');
   }
 
-    update() {
+  update() {
 
 
-      this.publicationService.update('p0001',{
-        "date": "17/82/2021",
-        "description": "update from frontend",
-        "idUser": 2,
-        "imageUrl": "http://fitebase/img.jpg",
-        "userPhotoUrl": "http://fitebase/user1.jpg"
-      } ).subscribe(
-        res => console.log(res))
-    }
+    this.publicationService.update('p0001',{
+      "date": "17/82/2021",
+      "description": "update from frontend",
+      "idUser": 2,
+      "imageUrl": "http://fitebase/img.jpg",
+      "userPhotoUrl": "http://fitebase/user1.jpg"
+    } ).subscribe(
+      res => console.log(res))
+  }
 
-    create(){
+  create(){
 
-      this.publicationService.create({
-        "date": "17/82/2021",
-        "description": "soy nuevo",
-        "idUser": 2,
-        "imageUrl": "http://fitebase/img.jpg",
-        "userPhotoUrl": "http://fitebase/user1.jpg"
-      } ).subscribe(
-        res => console.log(res))
+    this.publicationService.create({
+      "date": "17/82/2021",
+      "description": "soy nuevo",
+      "idUser": 2,
+      "imageUrl": "http://fitebase/img.jpg",
+      "userPhotoUrl": "http://fitebase/user1.jpg"
+    } ).subscribe(
+      res => console.log(res))
 
-    }
+  }
 
-    delete(){
-      this.publicationService.delete('p0002').subscribe(
-        res => console.log(res))
-    }
+  delete(){
+    this.publicationService.delete('p0002').subscribe(
+      res => console.log(res))
+  }
 }
