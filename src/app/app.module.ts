@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { AppComponent } from './app.component';
 import {RouterModule, Routes} from "@angular/router";
+import {SingletonService} from "./login/services/singleton.service";
 
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},

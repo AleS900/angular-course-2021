@@ -6,7 +6,8 @@ import {FormsModule} from "@angular/forms";
 import {NgbButtonsModule, NgbModule, NgbToastModule} from "@ng-bootstrap/ng-bootstrap";
 import {MatSliderModule} from "@angular/material/slider";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
-
+import {Test1Service} from "./services/test1.service";
+import {SingletonService} from "./services/singleton.service";
 
 const routes: Routes = [
   {path: '', component: LoginComponent}
@@ -25,6 +26,9 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     RouterModule.forChild(routes)
+  ],
+  providers: [
+    Test1Service
   ]
 })
 export class LoginModule { }
