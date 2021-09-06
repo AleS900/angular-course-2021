@@ -19,6 +19,7 @@ const routes: Routes = [
   imports: [
     MatProgressSpinnerModule,
     NgbToastModule,
+    NgbModule,
     NgbButtonsModule,
     MatSliderModule,
     CommonModule,
