@@ -5,7 +5,7 @@ import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',
-  templateUrl: './appPart.component.html',
+  templateUrl: './appPart4.component.html',
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
