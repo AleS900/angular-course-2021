@@ -36,15 +36,16 @@ export class AppComponent  {
     var moneyFrom = fromVar[0][1][moneyType] - quantity
 
     if(moneyType === "btc"){
-      this.negotiation.mineBTC(fromVar[0][0],moneyFrom).subscribe(res => console.log(res))
-      this.negotiation.mineBTC(toVar[0][0],moneyTo).subscribe(res => console.log(res))
+      this.negotiation.mineBTC(fromVar[0][0],moneyFrom).subscribe(x => console.log(x))
+      this.negotiation.mineBTC(toVar[0][0],moneyTo).subscribe(x => console.log(x))
     }else{
-      this.negotiation.mineETH(fromVar[0][0],moneyFrom).subscribe(res => console.log(res))
-      this.negotiation.mineETH(toVar[0][0],moneyTo).subscribe(res => console.log(res))
+      this.negotiation.mineETH(fromVar[0][0],moneyFrom).subscribe(x => console.log(x))
+      this.negotiation.mineETH(toVar[0][0],moneyTo).subscribe(x => console.log(x))
     }
-    this.negotiation.delete(id).subscribe(res=>console.log(res))
+    this.negotiation.delete(id).subscribe(x => console.log(x))
     this.negotiation.getWalletsDB().subscribe(data => this.getDataW(data))
     this.negotiation.getTransactionsDB().subscribe(data => this.getDataT(data))
+  
     this.updateTotalMoney();
     window.location.reload();
   }

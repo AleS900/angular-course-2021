@@ -4,7 +4,7 @@ import { Component, Input, OnInit } from '@angular/core';
   selector: 'transactions',
   template:`
   <div  [style.border]= "'1px solid black'"
-        [style.background]="mineType === 'PoW'? 'yellow' : 'green'"
+        [style.background]="mineType === 'PoW'? 'yellow' : 'forestGreen'"
         style="float: left; 
         margin: 10px; 
         padding: 10px;

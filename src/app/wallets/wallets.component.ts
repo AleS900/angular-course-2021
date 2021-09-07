@@ -4,7 +4,7 @@ import { Component, Input, OnInit } from '@angular/core';
   selector: 'wallets',
   template:` 
   <div  [style.border]= "'1px solid black'" 
-        [style.background]=" (eth+btc) > 5 ? 'brown' :(eth+btc) < 2 ? 'gray' : 'white'" style="float: left; margin: 10px; 
+        [style.background]=" (eth+btc) > 5 ? 'saddlebrown' :(eth+btc) < 2 ? 'gray' : 'white'" style="float: left; margin: 10px; 
         padding: 10px; 
         font-family: sans-serif;
         font-size: 110%"
