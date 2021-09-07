@@ -8,77 +8,58 @@ import { NegotiationService } from "./services/negotiation.service";
 
 export class AppComponent  {
 
-  wallets=[]
-  transactions=[]
-  btc = 0
-  eth = 0
+  walletsArr=[];
+  transactionsArr=[];
+  btc = 0;
+  eth = 0;
   anyLeft = true;
 
-  constructor(private fetcher:NegotiationService) { 
-    //console.log(this.fetcher.getAllWallets().subscribe(res => console.log(res)))
-    //console.log(this.fetcher.getAllTrans().subscribe(res => console.log(res)))
-    this.fetcher.getWalletsDB().subscribe(data => this.getDataWallets(data))
-    this.fetcher.getTransactionsDB().subscribe(data => this.getDataTrans(data))
+  constructor(private negotiation:NegotiationService) { 
+    this.negotiation.getWalletsDB().subscribe(data => this.getDataW(data))
+    this.negotiation.getTransactionsDB().subscribe(data => this.getDataT(data))
   }
 
-  getDataWallets(data){
-
-    this.wallets=Object.entries(data);
+  getDataW(data){
+    this.walletsArr=Object.entries(data);
     this.updateTotalMoney()
   }
 
-  getDataTrans(data){
-
-    this.transactions=Object.entries(data);
-    this.transLeft()
+  getDataT(data){
+    this.transactionsArr=Object.entries(data);
+    this.invalidTransactions()
   }
 
-  printThis(){
-    console.log(this.wallets)
-  }
-
-  onMine(idTrans, from, to, quantity, moneyType){
-    var personFrom = this.wallets.filter(item => item[1]["wallet"] == from)
-    var personTo = this.wallets.filter(item => item[1]["wallet"] == to)
-    var newQuantPerFrom = personFrom[0][1][moneyType] - quantity
-    var newQuantPerTo = personTo[0][1][moneyType] + quantity
-
-    console.log(newQuantPerFrom)
-    console.log(newQuantPerTo)
+  mining(id, from, to, quantity, moneyType){
+    var toVar = this.walletsArr.filter(x => x[1]["wallet"] == to)
+    var fromVar = this.walletsArr.filter(x => x[1]["wallet"] == from)
+    var moneyTo = toVar[0][1][moneyType] + quantity
+    var moneyFrom = fromVar[0][1][moneyType] - quantity
 
     if(moneyType === "btc"){
-      this.fetcher.mineBTC(personFrom[0][0],newQuantPerFrom).subscribe(res => console.log(res))
-      this.fetcher.mineBTC(personTo[0][0],newQuantPerTo).subscribe(res => console.log(res))
+      this.negotiation.mineBTC(fromVar[0][0],moneyFrom).subscribe(res => console.log(res))
+      this.negotiation.mineBTC(toVar[0][0],moneyTo).subscribe(res => console.log(res))
     }else{
-      this.fetcher.mineETH(personFrom[0][0],newQuantPerFrom).subscribe(res => console.log(res))
-      this.fetcher.mineETH(personTo[0][0],newQuantPerTo).subscribe(res => console.log(res))
+      this.negotiation.mineETH(fromVar[0][0],moneyFrom).subscribe(res => console.log(res))
+      this.negotiation.mineETH(toVar[0][0],moneyTo).subscribe(res => console.log(res))
     }
-
-    this.fetcher.delete(idTrans).subscribe(res=>console.log(res))
-    this.fetcher.getWalletsDB().subscribe(data => this.getDataWallets(data))
-    this.fetcher.getTransactionsDB().subscribe(data => this.getDataTrans(data))
-
-
+    this.negotiation.delete(id).subscribe(res=>console.log(res))
+    this.negotiation.getWalletsDB().subscribe(data => this.getDataW(data))
+    this.negotiation.getTransactionsDB().subscribe(data => this.getDataT(data))
+    this.updateTotalMoney();
     window.location.reload();
-    
-
-
-   // this.fetcher.mine(personFrom[0][0],newQuantPerFrom,moneyType)
   }
 
   updateTotalMoney(){
-    console.log(this.wallets)
     this.eth = 0
     this.btc = 0
-    for(var i in this.wallets){
-      this.eth = this.wallets[i][1]["eth"] + this.eth
-      this.btc = this.wallets[i][1]["btc"] + this.btc
-      console.log(this.btc)
+    for(var i in this.walletsArr){
+      this.eth = this.walletsArr[i][1]["eth"] + this.eth
+      this.btc = this.walletsArr[i][1]["btc"] + this.btc
     }
   }
 
-  transLeft():boolean{
-    return this.transactions.find(item => item[1]['mineType'] !== 'PoS' ||
+  invalidTransactions():boolean{
+    return this.transactionsArr.find(item => item[1]['mineType'] !== 'PoS' ||
     item[1]['miner'] > 20) === undefined
   }
 }

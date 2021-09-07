@@ -1,6 +1,6 @@
 <p style="font-family: sans-serif; font-size: 200%"  >BITCOIN-ETHERUM</p>
 
-<div *ngIf="transLeft()">
+<div *ngIf="invalidTransactions()">
 <h2>
   THERE ARE NOT TRANSACTIONS
 </h2>
@@ -16,7 +16,7 @@
 </div>
 
 <div style="display: flex; flex-direction: row">
-  <div *ngFor="let wallet of wallets">
+  <div *ngFor="let wallet of walletsArr">
     <wallets 
       [id]="wallet[0]" 
       [wallet]="wallet[1]['wallet']" 
@@ -32,7 +32,7 @@
 </div>
 
 <div style="display: flex; flex-direction: row">
-  <div *ngFor="let transactions of transactions">
+  <div *ngFor="let transactions of transactionsArr">
     <transactions 
       [id]="transactions[0]" 
       [date]="transactions[1]['date']" 
@@ -43,8 +43,7 @@
       [mineType]="transactions[1]['mineType']"  
       [miner]="transactions[1]['miner']" >
       <button
-        [disabled]="transactions[1]['mineType'] === 'PoS' && transactions[1]['miner'] 
-        < 20"(click)="onMine( transactions[0], 
+        [disabled]="transactions[1]['mineType'] === 'PoS' && transactions[1]['miner'] < 20"(click)="mining( transactions[0], 
                          transactions[1]['from'],
                          transactions[1]['to'], 
                          transactions[1]['quantity'], 
