@@ -1,45 +1,39 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'transactions',
-  template: `
+  template:`
   <div [style.background]="mineType === 'PoW'? 'yellow' : 'green'"
-       style="float: left; margin: 10px; padding: 10px;">
-	  <p>Date: {{date}}</p>
-    <p>From: {{from}}</p>
-	  <p>To: {{to}}</p>
-	  <p>Quantity: {{quantity}}</p>
-    <p>MoneyType: {{moneyType | uppercase}}</p>
-    <p>MineType: {{mineType}}</p>
-    <p>Miner: {{miner}}</p>
-    <button *ngIf="mineType === 'PoS' else myVarElse" 
-            (click)="onActivated()"
-            [disabled]="miner >= 20">
-            mine
-    </button>
+  style="float: left; margin: 10px; padding: 10px;">
 
-    <ng-template #myVarElse>
-        <button (click)="onActivated()">mine
-        </button>
-    </ng-template>
-  </div>
-  `,
+<p>Date: {{date}}</p>
+<p>From: {{from}}</p>
+<p>To: {{to}}</p>
+<p>Quantity: {{quantity}}</p>
+<p>MoneyType: {{moneyType | uppercase}}</p>
+<p>MineType: {{mineType}}</p>
+<p>Miner: {{miner}}</p>
+
+<ng-content></ng-content>
+
+
+</div>
+
+`,
 })
-export class TransactionsComponent{
-
-  @Input() date: string;
-  @Input() from: string;
-  @Input() to: string;
-  @Input() quantity:number;
-  @Input() moneyType: string;
-  @Input() mineType: string;
-  @Input() miner:number;
-  @Output() startTransaction = new EventEmitter();
+export class TransactionsComponent implements OnInit {
+  @Input() id;
+  @Input() date;
+  @Input() from;
+  @Input() to;
+  @Input() quantity;
+  @Input() moneyType;
+  @Input() mineType;
+  @Input() miner;
 
   constructor() { }
 
-  onActivated() {
-    this.startTransaction.emit();
+  ngOnInit() {
   }
 
 }

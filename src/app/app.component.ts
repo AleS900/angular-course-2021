@@ -1,66 +1,84 @@
 import { Component, VERSION } from "@angular/core";
+import { NegotiationService } from "./services/negotiation.service";
 
 @Component({
   selector: "my-app",
   templateUrl: "./app.component.html"
 })
+
 export class AppComponent  {
-  test:boolean =true;
-  cont:number=0;
 
-  listWallets = [
+  wallets=[]
+  transactions=[]
+  btc = 0
+  eth = 0
+  anyLeft = true;
 
-    {wallet: "MARIA123", name: "maria", eth: 0, btc: 2},
-    {wallet: "JUAN123", name: "juan", eth: 5, btc: 0},
-    {wallet: "LUCAS123", name: "lucas", eth: 6, btc: 3},
-    {wallet: "MARCOS123", name: "marcos", eth: 0, btc: 2},
-    {wallet: "PEDRO123", name: "pedro", eth: 1, btc: 0},
-    {wallet: "JUANA123", name: "juana", eth: 10, btc: 12}
-  ];
+  constructor(private fetcher:NegotiationService) { 
+    //console.log(this.fetcher.getAllWallets().subscribe(res => console.log(res)))
+    //console.log(this.fetcher.getAllTrans().subscribe(res => console.log(res)))
+    this.fetcher.getWalletsDB().subscribe(data => this.getDataWallets(data))
+    this.fetcher.getTransactionsDB().subscribe(data => this.getDataTrans(data))
+  }
 
-  listTransactions = [
-    {date: "2019-09-07T15:50+00Z ", from: "MARIA123" , to:"JUANA123"  , quantity: 2, moneyType: "btc", mineType: "PoW", miner: 5},
-    {date: "2019-09-07T15:50+00Z ", from: "JUAN123"  , to: "PEDRO123" , quantity: 2, moneyType: "eth", mineType: "PoS", miner: 21},
-    {date: "2019-09-07T15:50+00Z ", from: "LUCAS123" , to: "MARCOS123", quantity: 2, moneyType: "btc", mineType: "PoW", miner: 5},
-    {date: "2019-09-07T15:50+00Z ", from: "MARCOS123", to: "LUCAS123" , quantity: 2, moneyType: "eth", mineType: "PoS", miner: 10},
-    {date: "2019-09-07T15:50+00Z ", from: "PEDRO123" , to: "JUAN123"  , quantity: 2, moneyType: "btc", mineType: "PoW", miner: 5},
-    {date: "2019-09-07T15:50+00Z ", from: "JUANA123" , to: "MARIA123" , quantity: 2, moneyType: "eth", mineType: "PoS", miner: 30},
-    {date: "2019-09-07T15:50+00Z ", from: "MARIA123" , to: "JUANA123" , quantity: 2, moneyType: "btc", mineType: "PoW", miner: 2},
-    {date: "2019-09-07T15:50+00Z ", from: "JUAN123"  , to: "PEDRO123" , quantity: 2, moneyType: "eth", mineType: "PoS", miner: 15},
-    {date: "2019-09-07T15:50+00Z ", from: "LUCAS123" , to: "MARCOS123", quantity: 2, moneyType: "btc", mineType: "PoW", miner: 3},
-    {date: "2019-09-07T15:50+00Z ", from: "MARCOS123", to: "LUCAS123" , quantity: 2, moneyType: "eth", mineType: "PoS", miner: 5}
-  ];
-  
-  contETH= this.listWallets.reduce((acc,value) => acc+value.eth, 0)
+  getDataWallets(data){
 
-  contBTC= this.listWallets.reduce((acc,value) => acc+value.btc, 0) 
+    this.wallets=Object.entries(data);
+    this.updateTotalMoney()
+  }
 
-  trans = {
-    money: this.listTransactions.filter(p => p.moneyType)
-  };
+  getDataTrans(data){
 
-verifyAllTransactions() {
-  const noTransacciones = this.test;
-  return !this.test;
-}
+    this.transactions=Object.entries(data);
+    this.transLeft()
+  }
 
-pagar(info){
-  const index = this.trans.money.findIndex(p => p === info);
- 
-    if (info.moneyType === 'btc' && this.listWallets.find(item => item.wallet === info.from).btc - info.quantity >= 0) {
-      info.miner=info.miner+1;
-      this.listWallets.find(item => item.wallet === info.from).btc -= info.quantity;
-      this.listWallets.find(item => item.wallet === info.to).btc += info.quantity;
-    } else if (this.listWallets.find(item => item.wallet === info.from).eth - info.quantity >= 0 ) {
-      info.miner=info.miner+1;
-      this.listWallets.find(item => item.wallet === info.from).eth -= info.quantity;
-      this.listWallets.find(item => item.wallet === info.to).eth += info.quantity;
-    } else if(this.cont>15){
-      this.test = !this.test;
-    } else {
-      this.cont=this.cont+1;
+  printThis(){
+    console.log(this.wallets)
+  }
+
+  onMine(idTrans, from, to, quantity, moneyType){
+    var personFrom = this.wallets.filter(item => item[1]["wallet"] == from)
+    var personTo = this.wallets.filter(item => item[1]["wallet"] == to)
+    var newQuantPerFrom = personFrom[0][1][moneyType] - quantity
+    var newQuantPerTo = personTo[0][1][moneyType] + quantity
+
+    console.log(newQuantPerFrom)
+    console.log(newQuantPerTo)
+
+    if(moneyType === "btc"){
+      this.fetcher.mineBTC(personFrom[0][0],newQuantPerFrom).subscribe(res => console.log(res))
+      this.fetcher.mineBTC(personTo[0][0],newQuantPerTo).subscribe(res => console.log(res))
+    }else{
+      this.fetcher.mineETH(personFrom[0][0],newQuantPerFrom).subscribe(res => console.log(res))
+      this.fetcher.mineETH(personTo[0][0],newQuantPerTo).subscribe(res => console.log(res))
     }
-    
-}
 
+    this.fetcher.delete(idTrans).subscribe(res=>console.log(res))
+    this.fetcher.getWalletsDB().subscribe(data => this.getDataWallets(data))
+    this.fetcher.getTransactionsDB().subscribe(data => this.getDataTrans(data))
+
+
+    window.location.reload();
+    
+
+
+   // this.fetcher.mine(personFrom[0][0],newQuantPerFrom,moneyType)
+  }
+
+  updateTotalMoney(){
+    console.log(this.wallets)
+    this.eth = 0
+    this.btc = 0
+    for(var i in this.wallets){
+      this.eth = this.wallets[i][1]["eth"] + this.eth
+      this.btc = this.wallets[i][1]["btc"] + this.btc
+      console.log(this.btc)
+    }
+  }
+
+  transLeft():boolean{
+    return this.transactions.find(item => item[1]['mineType'] !== 'PoS' ||
+    item[1]['miner'] > 20) === undefined
+  }
 }
