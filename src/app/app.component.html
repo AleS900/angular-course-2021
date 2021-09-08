@@ -1,65 +1,6 @@
-<p style="font-family: sans-serif; font-size: 200%"  >BITCOIN-ETHERUM</p>
+<!--------------- Componenet Navigation Task--------------->
 
-<div *ngIf="invalidTransactions()" 
-      [style.border]= "'1px solid black'" 
-      [style.background]=" 'saddlebrown' "
-      style="font-family: sans-serif; font-size: 150% ; color: white; float: left; margin: 10px; padding: 10px; "
->
-       There are no Transactions
-</div>
+<button routerLink="provider"
+        routerLinkActive="active-router">provider comp</button>
 
-<p></p><br><br><br><br><br>
-
-
-<div 
-      [style.border]= "'1px solid black'" 
-      [style.background]=" 'green' "
-      style="position: absolute; top: 10px; right: 10px; font-family: sans-serif; font-size: 100% ; color: white;  margin: 10px; padding: 10px; "
->
-  Total ETH {{eth}} 
-  <blockquote></blockquote>
-  Total BTC {{btc}}
-</div>
-
-<div style="font-family: sans-serif; font-size: 130%" >
-  Wallets
-</div>
-
-<div style="display: flex; flex-direction: row">
-  <div *ngFor="let wallet of walletsArr">
-    <wallets 
-      [id]="wallet[0]" 
-      [wallet]="wallet[1]['wallet']" 
-      [name]="wallet[1]['name']" 
-      [eth]="wallet[1]['eth']" 
-      [btc]="wallet[1]['btc']">
-    </wallets>  
-  </div>
-</div>
-<br>
-<div style="font-family: sans-serif; font-size: 130%" >
-  Transactions
-</div>
-
-<div style="display: flex; flex-direction: row">
-  <div *ngFor="let transactions of transactionsArr">
-    <transactions 
-      [id]="transactions[0]" 
-      [date]="transactions[1]['date']" 
-      [from]="transactions[1]['from']"  
-      [to]="transactions[1]['to']"  
-      [quantity]="transactions[1]['quantity']"  
-      [moneyType]="transactions[1]['moneyType']"  
-      [mineType]="transactions[1]['mineType']"  
-      [miner]="transactions[1]['miner']" >
-      <button
-        [disabled]="transactions[1]['mineType'] === 'PoS' && transactions[1]['miner'] < 20"(click)="mining( transactions[0], 
-                         transactions[1]['from'],
-                         transactions[1]['to'], 
-                         transactions[1]['quantity'], 
-                         transactions[1]['moneyType'])"
-        >Mine
-      </button>
-    </transactions>
-  </div>
-</div>
+<router-outlet></router-outlet>
