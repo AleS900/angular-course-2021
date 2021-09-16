@@ -10,6 +10,7 @@ import {PublicationService} from "../shared/services/publication.service";
 const routes: Routes = [
   {path: '', component: ProfileComponent}
 ]
+
 @NgModule({
   declarations: [
     ProfileComponent

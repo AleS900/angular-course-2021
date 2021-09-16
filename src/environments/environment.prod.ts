@@ -1,10 +1,10 @@
 export const environment = {
   production: true,
   app: {
-    apiBaseUrl: "https://facebook-angular-course-savc-default-rtdb.firebaseio.com"
+    apiBaseUrl: "https://facebook-angular-course-default-rtdb.firebaseio.com"
   },
   auth: {
     apiBaseUrl: "https://identitytoolkit.googleapis.com",
-    key: "AIzaSyBd5RbHo61Q6lc0H2NcUiLvTTOsa0reIqQ"
+    key: "AIzaSyBqTVtoXVkcRcTtZ3uKtjR1wkjKO56xeIk"
   }
 };

@@ -8,6 +8,7 @@ import {
 import {Observable, throwError} from 'rxjs';
 import {AuthService} from "../services/auth.service";
 import {catchError} from "rxjs/operators";
+
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
@@ -18,9 +19,11 @@ export class AuthInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
 
     const token = this.authService.getToken();
+
     if(token){
       let params = new HttpParams();
       params = params.append('auth', token);
+
       request = request.clone({
         url: `${request.url}`,
         params
