@@ -1,0 +1,5 @@
+Debido a un problema desconocido al tratar de solucionar un problema con el commit de la fecha 09/13/2021 New architecture, todos los commits desde las fechas 7 de Septiembre a la fecha de Sebtiembre 15 desaparecieron, con tal motivo los cambios debieran poner seran puestos aqui.
+
+Para comrpobar dicho error el codigo de una fecha a otra contiene codigo modificado no commiteado se ruega la comprensión, con fin de tener todos los commits necesarios, que cabe recalcar estan ya implementados se hará un commit modificando el presente documento para hacer cada commit:
+
+09/06/21 Styles Angular Forms
