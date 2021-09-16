@@ -25,3 +25,5 @@ Para comrpobar dicho error el codigo de una fecha a otra contiene codigo modific
 09/10/2021 Publication service, catch error interceptor, veryfication token injection
 
 09/10/2021 Last modification
+
+09/13/2021 New Architecture
