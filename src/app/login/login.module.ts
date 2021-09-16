@@ -9,6 +9,7 @@ import {SharedMaterialModule} from "../shared/shared-material.module";
 const routes: Routes = [
   {path: '', component: LoginComponent}
 ]
+
 @NgModule({
   declarations: [
     LoginComponent,

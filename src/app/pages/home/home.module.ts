@@ -12,6 +12,7 @@ import {PostModule} from "../../shared/modules/post/post.module";
 const routes: Routes = [
   {path: '', component: HomeComponent}
 ]
+
 @NgModule({
   declarations: [
     HomeComponent,
@@ -29,5 +30,6 @@ const routes: Routes = [
     PublicationService
   ]
 })
+
 export class HomeModule {
 }

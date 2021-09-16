@@ -15,6 +15,7 @@
       width: 500px;
       margin-top: 15px;
     }
+
     img {
       width: 330px;
       margin: -33px;
@@ -23,10 +24,12 @@
   }
 
   .right {
+
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
     .form {
       width: 400px;
       display: flex;
@@ -39,6 +42,7 @@
       -moz-border-radius: 8px;
       -ms-border-radius: 8px;
       -o-border-radius: 8px;
+
       input {
         padding: 14px 16px;
         font-size: 17px;
@@ -52,10 +56,12 @@
         -o-border-radius: 6px;
         margin-bottom: 15px;
       }
+
       input:focus {
         box-shadow: 0 0 5px rgba(66, 133, 244, 0.7);
         border: 1px solid rgba(66, 133, 244, 0.7);
       }
+
       .login-btn {
         background: #1877f2;
         border: none;
@@ -76,9 +82,11 @@
         -ms-transition: all 0.2s ease;
         -o-transition: all 0.2s ease;
       }
+
       .login-btn:hover {
         background: #1668d3;
       }
+
       a {
         color: #1877f2;
         text-decoration: none;
@@ -86,15 +94,18 @@
         margin: 20px 0px;
         font-size: 14px;
       }
+
       a:hover {
         text-decoration: underline;
       }
+
       .underline {
         width: 100%;
         height: 1px;
         background: #dadde1;
         margin-bottom: 20px;
       }
+
       .create-new-account-btn {
         width: 200px;
         margin: auto;
@@ -117,23 +128,30 @@
         -ms-transition: all 0.2s ease;
         -o-transition: all 0.2s ease;
       }
+
       .create-new-account-btn:hover {
         background: #35ac1d;
       }
+
     }
+
     p {
       text-align: center;
       margin-top: 20px;
       color: #1c1e21;
       font-size: 14px;
+
       a {
         text-decoration: none;
         color: #1c1e21;
         font-weight: bold;
       }
+
       a:hover {
         text-decoration: underline;
       }
     }
+
   }
+
 }
