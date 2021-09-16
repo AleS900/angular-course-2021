@@ -5,3 +5,5 @@ Para comrpobar dicho error el codigo de una fecha a otra contiene codigo modific
 09/06/21 Styles Angular Forms
 
 09/08/21 Fix Enviorment
+
+09/08/21 Reactive form Validation
