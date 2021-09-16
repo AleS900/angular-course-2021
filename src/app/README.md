@@ -20,3 +20,5 @@ Para comrpobar dicho error el codigo de una fecha a otra contiene codigo modific
 
 09/09/2021 Save token into local storage
 
+09/10/2021 Creation of auth interceptor
+
