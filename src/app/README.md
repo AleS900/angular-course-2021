@@ -16,3 +16,5 @@ Para comrpobar dicho error el codigo de una fecha a otra contiene codigo modific
 
 09/09/2021 Sign in with email and password
 
+09/09/2021 sign up with firebase
+
