@@ -1,14 +1,17 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
+import { BooltoStringPipe } from './pipes/boolToString.pipe';
+import { PersonComponent } from './person/person.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,PersonComponent,BooltoStringPipe
   ],
   imports: [
-    BrowserModule
+    BrowserModule, HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
