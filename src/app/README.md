@@ -7,3 +7,6 @@ Para comrpobar dicho error el codigo de una fecha a otra contiene codigo modific
 09/08/21 Fix Enviorment
 
 09/08/21 Reactive form Validation
+
+09/09/2021 Styles Facebook
+
