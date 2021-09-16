@@ -1,3 +1,13 @@
-@import "./pages/admin";
-@import "./pages/buy";
-@import "./pages/home";
+// PAGES
+
+@import "pages/_login";
+@import "pages/_home";
+@import "pages/_profile";
+
+// COMPONENTS
+
+@import "components/_sidebar";
+@import "components/_message-sender";
+@import "components/_header";
+@import "components/_story";
+@import "components/_post";
