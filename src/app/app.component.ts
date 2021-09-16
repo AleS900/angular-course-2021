@@ -38,7 +38,7 @@ export class AppComponent {
     this.numUnvac=this.unvac.length
   }
 
-  vaccinate(id){
+  vaccinate(id:any){
     var personToBeVaccinated = this.unvac.find(person => person[0] === id)
     console.log(personToBeVaccinated)
     console.log(personToBeVaccinated[1]['doses'])

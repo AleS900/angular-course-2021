@@ -51,7 +51,7 @@
     >
       <button
         [disabled]="person[1]['disease'] === true || person[1]['age'] < 18" 
-        (click)="Vaccinate( person[0],
+        (click)="vaccinate( person[0],
                            person[1]['name'],
                            person[1]['age'],
                             person[1]['date'],
