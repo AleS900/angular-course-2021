@@ -3,3 +3,5 @@ Debido a un problema desconocido al tratar de solucionar un problema con el comm
 Para comrpobar dicho error el codigo de una fecha a otra contiene codigo modificado no commiteado se ruega la comprensión, con fin de tener todos los commits necesarios, que cabe recalcar estan ya implementados se hará un commit modificando el presente documento para hacer cada commit:
 
 09/06/21 Styles Angular Forms
+
+09/08/21 Fix Enviorment
