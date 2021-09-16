@@ -3,10 +3,14 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
+  production: false,
   app: {
-    apiBaseUrl: "https://facebook-angular-course-default-rtdb.firebaseio.com"
+    apiBaseUrl: "https://facebook-angular-course-savc-default-rtdb.firebaseio.com"
   },
-  production: false
+  auth: {
+    apiBaseUrl: "https://identitytoolkit.googleapis.com",
+    key: "AIzaSyBd5RbHo61Q6lc0H2NcUiLvTTOsa0reIqQ"
+  }
 };
 
 /*

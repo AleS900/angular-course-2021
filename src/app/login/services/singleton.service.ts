@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class SingletonService {
 
-  private message:string = '';
+  private message:string = 'Hi, this is a message from LOGIN';
 
   constructor() {
 
