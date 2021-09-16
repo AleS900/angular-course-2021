@@ -22,3 +22,5 @@ Para comrpobar dicho error el codigo de una fecha a otra contiene codigo modific
 
 09/10/2021 Creation of auth interceptor
 
+09/10/2021 publication service, catch error interceptor, veryfication token injection
+
