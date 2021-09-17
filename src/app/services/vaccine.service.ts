@@ -9,6 +9,8 @@ export class VaccineService {
   urlUVP="https://vaccines-test-default-rtdb.firebaseio.com/unvaccinated"
   urlUVD="https://vaccines-test-default-rtdb.firebaseio.com/unvaccinated"
 
+  
+
   constructor(private http: HttpClient) { }
 
   public getAllVac():Observable<any>{
