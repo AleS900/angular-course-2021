@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import { VaccineService } from './services/vaccine.service';
 
 @Component({
@@ -11,6 +13,11 @@ export class AppComponent implements OnInit {
   unvac=[];
   numVac=0;
   numUnvac=0;
+  ngForm:FormGroup;
+  ngForm2:FormGroup;
+  cr:Subscription;
+  ed:Subscription;
+  idSt:string;
   
   constructor(private serv:VaccineService){
 
@@ -19,8 +26,10 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit():void{
-    this.vac=[]
-    this.unvac=[]
+    this.vac=[];
+    this.unvac=[];
+    this.numUnvac;
+    this.numVac;
   }
 
   makeVacDB(data:any){
@@ -33,6 +42,18 @@ export class AppComponent implements OnInit {
     this.unvac=Object.entries(data);
     this.checkState()
     this.checkAllVac()
+  }
+
+  creadorcito(){
+    this.cr === this.serv.createPerson(this.ngForm.value).subscribe(
+      s=>this.serv
+    );
+  }
+
+  editorcito(){
+    this.ed === this.serv.editVac('idString', this.ngForm.value).subscribe(
+      s=>this.serv
+    );
   }
 
 

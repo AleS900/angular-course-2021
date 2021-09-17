@@ -1,5 +1,4 @@
 <p style="font-family: sans-serif; font-size: 200%"  >VACUNAS</p>
-
 <div *ngIf="!checkAllVac()"
      [style.border]= "'1px solid black'" 
      [style.background]=" 'red' "
@@ -7,8 +6,35 @@
 >
   EVERYBODY VACCINATED
 </div>
-
 <p></p><br><br><br><br><br>
+
+<p>Register</p>
+<form #form="ngForm"
+      (ngSubmit)="onRegister(form)"
+      style="display: flex; flex-direction: column;">
+      <input matInput formControlName="name" type="text" placeholder="Name">
+      <input matInput formControlName="age" type="text" placeholder="Age">
+      <input matInput formControlName="disease" type="text" placeholder="Disease">
+      <input matInput formControlName="vaccineType" type="text" placeholder="VaccineType">
+  <button (click)="creadorcito()">Register Person</button>
+</form>
+
+<!--
+<p>Editar</p>
+<form #form="ngForm2"
+      (ngSubmit)="onRegister(form)"
+      style="display: flex; flex-direction: column;">
+      <input matInput formControlName="name" type="text" placeholder="Name">
+      <input matInput formControlName="age" type="text" placeholder="Age">
+      <input matInput formControlName="disease" type="text" placeholder="Disease">
+      <input matInput formControlName="vaccineType" type="text" placeholder="VaccineType">
+  <button (click)="editorcito()">Register Person</button>
+</form>
+
+-->
+
+
+
 
 <div [style.border]= "'1px solid black'" 
      [style.background]=" 'blue' "
@@ -61,6 +87,10 @@
                             person[1]['vaccineType'])"
       > Vaccinate
       </button>
+      <button
+      (click)="editorcito()"
+    > Edit
+    </button>
     </person>
   </div>
 </div>

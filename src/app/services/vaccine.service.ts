@@ -4,10 +4,10 @@ import { Observable } from 'rxjs';
 
 @Injectable({providedIn: 'root'})
 export class VaccineService {
-  urlV="https://test-angular-2ndtest-default-rtdb.firebaseio.com/vaccinated.json"
-  urlUV="https://test-angular-2ndtest-default-rtdb.firebaseio.com/unvaccinated.json"
-  urlUVP="https://test-angular-2ndtest-default-rtdb.firebaseio.com/unvaccinated"
-  urlUVD="https://test-angular-2ndtest-default-rtdb.firebaseio.com/unvaccinated"
+  urlV="https://vaccines-test-default-rtdb.firebaseio.com/vaccinated.json"
+  urlUV="https://vaccines-test-default-rtdb.firebaseio.com/unvaccinated.json"
+  urlUVP="https://vaccines-test-default-rtdb.firebaseio.com/unvaccinated"
+  urlUVD="https://vaccines-test-default-rtdb.firebaseio.com/unvaccinated"
 
   constructor(private http: HttpClient) { }
 
@@ -21,6 +21,10 @@ export class VaccineService {
 
   public updateVac(id:string,doses:number):Observable<any>{
     return this.http.patch(`${this.urlUVP}/${id}.json`,{"doses":doses})
+  }
+
+  public editVac(id:string, body: any):Observable<any>{
+    return this.http.patch(`${this.urlUVP}/${id}.json`,body)
   }
 
   public createPerson(body: any): Observable<any>{
