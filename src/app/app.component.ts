@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { VaccineService } from './services/vaccine.service';
 
 @Component({
@@ -6,17 +6,21 @@ import { VaccineService } from './services/vaccine.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   vac=[];
   unvac=[];
   numVac=0;
   numUnvac=0;
   
   constructor(private serv:VaccineService){
-  this.vac=[]
-  this.unvac=[]
+
   this.serv.getAllVac().subscribe(data => this.makeVacDB(data))
   this.serv.getAllUnvac().subscribe(data => this.makeUnvacDB(data))
+  }
+
+  ngOnInit():void{
+    this.vac=[]
+    this.unvac=[]
   }
 
   makeVacDB(data:any){
@@ -31,28 +35,24 @@ export class AppComponent {
     this.checkAllVac()
   }
 
-  checkState(){
-    this.numVac=0
-    this.numUnvac=0
-    this.numVac=this.vac.length
-    this.numUnvac=this.unvac.length
-  }
 
-  vaccinate(id:any){
-    var personToBeVaccinated = this.unvac.find(person => person[0] === id)
-    console.log(personToBeVaccinated)
-    console.log(personToBeVaccinated[1]['doses'])
-    var currentDoses = personToBeVaccinated[1]['doses']+1
-    this.serv.updateVac(id,currentDoses).subscribe(res => console.log(res))
+  vaccinate(id){
+    var personToBeV = this.unvac.find(person => person[0] === id)
+    console.log(personToBeV)
+    console.log(personToBeV[1]['doses'])
+    var tempDoses = personToBeV[1]['doses']+1
+    this.serv.updateVac(id,tempDoses).subscribe(res => console.log(res))
 
-    if(personToBeVaccinated[1]['vaccineType'] === "A" && currentDoses ===1){
-      this.serv.createPerson({"name":personToBeVaccinated[1]['name'],"age":personToBeVaccinated[1]['age'],"date":personToBeVaccinated[1]['date'],"disease":personToBeVaccinated[1]['disease'], "vaccineType":personToBeVaccinated[1]['vaccineType'],"vaccined":1,"doses":currentDoses}).subscribe(res => console.log(res))
+    if(personToBeV[1]['vaccineType'] === "A" && tempDoses ===1){
+      this.serv.createPerson({"name":personToBeV[1]['name'],"age":personToBeV[1]['age'],"date":personToBeV[1]['date'],"disease":personToBeV[1]['disease'], "vaccineType":personToBeV[1]['vaccineType'],"vaccined":1,"doses":tempDoses}).subscribe(res => console.log(res))
       this.serv.deletePerson(id).subscribe(res => console.log(res))
-    }else if(personToBeVaccinated[1]['vaccineType'] === "B"&& currentDoses ===2){
-      this.serv.createPerson({"name":personToBeVaccinated[1]['name'],"age":personToBeVaccinated[1]['age'],"date":personToBeVaccinated[1]['date'],"disease":personToBeVaccinated[1]['disease'], "vaccineType":personToBeVaccinated[1]['vaccineType'],"vaccined":1,"doses":currentDoses}).subscribe(res => console.log(res))
+    }else if(personToBeV[1]['vaccineType'] === "B"&& tempDoses ===2){
+ 
+      this.serv.createPerson({"name":personToBeV[1]['name'],"age":personToBeV[1]['age'],"date":personToBeV[1]['date'],"disease":personToBeV[1]['disease'], "vaccineType":personToBeV[1]['vaccineType'],"vaccined":1,"doses":tempDoses}).subscribe(res => console.log(res))
       this.serv.deletePerson(id).subscribe(res => console.log(res))
-    }else if(personToBeVaccinated[1]['vaccineType'] === "C"&& currentDoses ===3){
-      this.serv.createPerson({"name":personToBeVaccinated[1]['name'],"age":personToBeVaccinated[1]['age'],"date":personToBeVaccinated[1]['date'],"disease":personToBeVaccinated[1]['disease'], "vaccineType":personToBeVaccinated[1]['vaccineType'],"vaccined":1,"doses":currentDoses}).subscribe(res => console.log(res))
+    }else if(personToBeV[1]['vaccineType'] === "C"&& tempDoses ===3){
+    
+      this.serv.createPerson({"name":personToBeV[1]['name'],"age":personToBeV[1]['age'],"date":personToBeV[1]['date'],"disease":personToBeV[1]['disease'], "vaccineType":personToBeV[1]['vaccineType'],"vaccined":1,"doses":tempDoses}).subscribe(res => console.log(res))
       this.serv.deletePerson(id).subscribe(res => console.log(res))
     }
     
@@ -66,10 +66,19 @@ export class AppComponent {
 
 
     window.location.reload();
+
+    
   }
 
   checkAllVac():boolean{
     return this.unvac.find(person => person[1]['disease'] === false && person[1]['age'] >=18 ) !==undefined
+  }
+
+  checkState(){
+    this.numVac=0
+    this.numUnvac=0
+    this.numVac=this.vac.length
+    this.numUnvac=this.unvac.length
   }
 
 

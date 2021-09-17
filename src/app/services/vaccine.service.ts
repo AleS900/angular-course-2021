@@ -30,8 +30,7 @@ export class VaccineService {
   }
 
   public deletePerson(id: string): Observable<any>{
-    console.log("Deleting...")
     return this.http.delete(
-      `${this.urlUVD}/${id}.json`);
+      `${this.urlUVP}/${id}.json`);
   }
 }
