@@ -62,11 +62,7 @@ export class AppComponent implements OnInit {
     this.serv.getAllVac().subscribe(data => this.makeVacDB(data))
     this.serv.getAllUnvac().subscribe(data => this.makeUnvacDB(data))
     this.checkAllVac()
-    
-
-
-    window.location.reload();
-
+  
     
   }
 
